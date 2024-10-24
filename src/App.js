@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import AppHeader from "./main/AppHeader";
+import Events from "./main/Events";
+import AppTools from "./main/AppTools";
+import EventDetail from "./main/EventDetail";
 
-function App() {
+import EventsProvider from "./tech/providers/EventsProvider";
+import UsersProvider from "./tech/providers/UsersProvider";
+
+const App = () => {
+  const divStyles = {
+    margin: "0 3vw",
+    minHeight: "100vh",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={divStyles}>
+      <AppHeader />
+      <AppTools />
+      {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
+      <UsersProvider>
+        <EventsProvider>
+          <Events />
+          <EventDetail />
+        </EventsProvider>
+      </UsersProvider>
     </div>
   );
-}
+};
 
 export default App;
