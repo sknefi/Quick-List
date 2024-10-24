@@ -1,0 +1,30 @@
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.event-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-detail-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.event-detail-icon {
+  font-size: 4rem;
+}
+
+.event-info {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+h2 {
+  font-size: 6rem;
+}

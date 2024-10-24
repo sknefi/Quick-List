@@ -3,9 +3,10 @@ import logo from "./logo.png";
 
 const AppHeader = () => {
   const divStyles = {
-    "display": "flex",
-    "flexDirection": "coloumn",
-    "justifyContent": "space-between",
+    display: "flex",
+    flexDirection: "coloumn",
+    justifyContent: "space-between",
+    alignItems: "center",
   };
 
   const logoStyles = {
@@ -14,7 +15,7 @@ const AppHeader = () => {
   };
 
   const h1Styles = {
-    "fontSize": "3rem",
+    fontSize: "3rem",
   };
   return (
     <div style={divStyles}>

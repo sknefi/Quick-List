@@ -1,3 +1,5 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import AppHeader from "./main/AppHeader";
 import Events from "./main/Events";
 import AppTools from "./main/AppTools";
@@ -17,12 +19,17 @@ const App = () => {
       <AppHeader />
       <AppTools />
       {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
-      <UsersProvider>
-        <EventsProvider>
-          <Events />
-          <EventDetail />
-        </EventsProvider>
-      </UsersProvider>
+      <BrowserRouter>
+        <UsersProvider>
+          <EventsProvider>
+            <Routes>
+              <Route index path="/" element={<Events />}></Route>
+              <Route path="/:id" element={<EventDetail />}></Route>
+            </Routes>
+          </EventsProvider>
+        </UsersProvider>
+      </BrowserRouter>
+      <EventDetail />
     </div>
   );
 };
