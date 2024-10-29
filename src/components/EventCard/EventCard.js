@@ -6,15 +6,16 @@ import { FaFileArchive } from "react-icons/fa";
 import "./EventCard.css";
 
 const EventCard = ({ event, loggedInUser }) => {
+  // handle deleteButton
   const [showBtnDelete, setShowBtnDelete] = useState(false);
   const handleCloseBtnDelete = () => setShowBtnDelete(false);
   const handleShowBtnDelete = () => setShowBtnDelete(true);
-
+  
+  // handle archiveButton
   const [showBtnArchive, setShowBtnArchive] = useState(false);
   const handleCloseBtnArchive = () => setShowBtnArchive(false);
   const handleShowBtnArchive = () => setShowBtnArchive(true);
 
-  console.log(event)
   return (
     <div className={`event-card ${event.archived === true ? "event-card-archived-color" : ""}`}>
       <h2 className="event-name">{event.name}</h2>

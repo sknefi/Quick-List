@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { EventsContext } from "../contexts/EventsContext";
 
 const EventsProvider = ({ children }) => {
+  // fetch na EventsList
   const [allEvents, setAllEvents] = useState([
     {
       id: "81f0ba2765c2fd8e89d604c0fb7be123",

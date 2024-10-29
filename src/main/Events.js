@@ -5,7 +5,9 @@ import EventCard from "../components/EventCard/EventCard";
 import "./Events.css";
 
 const AppBody = () => {
+  // pre event kartičky
   const { events } = useContext(EventsContext);
+  // pre zobrazenie archive/delete buttnu na karticke
   const { loggedInUser } = useContext(UsersContext);
 
   return (
