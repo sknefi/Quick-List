@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import "./AppTools.css";
+import { useContext } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import { EventsContext } from "../tech/contexts/EventsContext";
 
 const AppTools = () => {
-  const buttonStyles = {};
-  const divStyles = {
-    display: "flex",
-    flexDirection: "coloumn",
-    justifyContent: "flex-end",
-  };
-  const eyeStyles = {
-    fontSize: "48px",
-  };
+  const { displayArchived, statusArchivedMap } = useContext(EventsContext);
+
+  function handleClickArchived() {
+    statusArchivedMap.setStatusArchived(!statusArchivedMap.statusArchived);
+    displayArchived(!statusArchivedMap.statusArchived);
+  }
+
   return (
-    <div style={divStyles}>
-      <IoMdEye style={eyeStyles} />
+    <div className="app-tools-div">
+      {statusArchivedMap.statusArchived && (
+        <IoMdEye
+          className="icon-eye"
+          onClick={handleClickArchived}
+        />
+      )}
+      {!statusArchivedMap.statusArchived && (
+        <IoMdEyeOff
+          className="icon-eye"
+          onClick={handleClickArchived}
+        />
+      )}
       <button>CREATE</button>
     </div>
   );

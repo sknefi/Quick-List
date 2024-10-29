@@ -12,14 +12,16 @@ const EventsProvider = ({ children }) => {
         "c13b6c6e17b749735950c09e41bd8449",
       ],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-      icon: "🍩"
+      archived: false,
+      icon: "🍩",
     },
     {
       id: "141eea2765c2fd8e89d604c0fb7b0919",
       name: "Pets",
       members: ["04f0ba2765c2fd8e89d604c0fb7f6bae"],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-      icon: "🐻"
+      archived: true,
+      icon: "🐻",
     },
     {
       id: "edc1b6c6e17b749735950c09e41bdaaeb",
@@ -30,21 +32,44 @@ const EventsProvider = ({ children }) => {
         "c13b6c6e17b749735950c09e41bd8449",
       ],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
-      icon: "🏙️"
+      archived: true,
+      icon: "🏙️",
     },
     {
       id: "ce01b6c6e17b749735950c09e41bde012",
       name: "Random",
       members: [],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
-      icon: "◎"
+      icon: "◎",
+      archived: false,
     },
   ]);
-  const hanlderMap = {
-    events: allEvents,
+
+  // nastavuje status archivovaniu eventov (sú/nie sú archivované)
+  const [statusArchived, setStatusArchived] = useState(true);
+
+  // premenná, ktorá sa posiela do handlerMapy a posiela tam buď všetky eventy alebo iba tie vyfiltrované
+  const [events, setEvents] = useState(allEvents);
+
+  // určuje, ktoré eventy sa majú zobraziť
+  function displayArchived(x) {
+    if (x) {
+      return setEvents(allEvents);
+    } else {
+      return setEvents(allEvents.filter((event) => !event.archived));
+    }
+  }
+
+  const handlerMap = {
+    events: events,
+    displayArchived: displayArchived,
+    statusArchivedMap: {
+      statusArchived: statusArchived,
+      setStatusArchived: setStatusArchived,
+    },
   };
   return (
-    <EventsContext.Provider value={hanlderMap}>
+    <EventsContext.Provider value={handlerMap}>
       {children}
     </EventsContext.Provider>
   );

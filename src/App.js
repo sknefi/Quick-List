@@ -17,18 +17,18 @@ const App = () => {
   return (
     <div style={divStyles}>
       <AppHeader />
-      <AppTools />
       {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
-      <BrowserRouter>
-        <UsersProvider>
-          <EventsProvider>
+      <UsersProvider>
+        <EventsProvider>
+          <AppTools />
+          <BrowserRouter>
             <Routes>
               <Route index path="/" element={<Events />}></Route>
               <Route path="/:id" element={<EventDetail />}></Route>
             </Routes>
-          </EventsProvider>
-        </UsersProvider>
-      </BrowserRouter>
+          </BrowserRouter>
+        </EventsProvider>
+      </UsersProvider>
       <EventDetail />
     </div>
   );

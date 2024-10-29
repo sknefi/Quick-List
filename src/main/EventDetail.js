@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { IoIosSettings } from "react-icons/io";
+import ShowItems from "../components/ShowItems/ShowItems";
 import "./EventDetail.css";
 
 const EventDetail = () => {
@@ -36,6 +37,9 @@ const EventDetail = () => {
       state: "pending",
     },
   ];
+
+  const [showAll, setShowAll] = useState(true);
+
   return (
     <div>
       <div className="event-detail">
@@ -44,11 +48,23 @@ const EventDetail = () => {
           <h2>{event.name}</h2>
         </div>
         <div className="event-detail-icons">
-          <IoMdEye className="event-detail-icon" />
+          {showAll && (
+            <IoMdEye
+              onClick={() => setShowAll(!showAll)}
+              className="event-detail-icon"
+            />
+          )}
+          {!showAll && (
+            <IoMdEyeOff
+              onClick={() => setShowAll(!showAll)}
+              className="event-detail-icon"
+            />
+          )}
           <IoIosAddCircleOutline className="event-detail-icon" />
           <IoIosSettings className="event-detail-icon" />
         </div>
       </div>
+      <ShowItems items={items}/>
     </div>
   );
 };

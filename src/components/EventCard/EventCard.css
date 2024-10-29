@@ -11,6 +11,10 @@
   box-shadow: 2px 2px 3px #0f0f0f;
 }
 
+.event-card-archived-color {
+  background-color: #363d49;
+}
+
 .event-name {
   font-size: 3rem;
 }

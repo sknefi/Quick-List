@@ -7,8 +7,7 @@ import "./Events.css";
 const AppBody = () => {
   const { events } = useContext(EventsContext);
   const { loggedInUser } = useContext(UsersContext);
-  console.log(events);
-  console.log(loggedInUser);
+
   return (
     <div className="events">
       {events.map((event) => {

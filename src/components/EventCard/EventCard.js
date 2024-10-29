@@ -7,16 +7,16 @@ import "./EventCard.css";
 
 const EventCard = ({ event, loggedInUser }) => {
   const [showBtnDelete, setShowBtnDelete] = useState(false);
-
   const handleCloseBtnDelete = () => setShowBtnDelete(false);
   const handleShowBtnDelete = () => setShowBtnDelete(true);
 
   const [showBtnArchive, setShowBtnArchive] = useState(false);
-
   const handleCloseBtnArchive = () => setShowBtnArchive(false);
   const handleShowBtnArchive = () => setShowBtnArchive(true);
+
+  console.log(event)
   return (
-    <div className="event-card">
+    <div className={`event-card ${event.archived === true ? "event-card-archived-color" : ""}`}>
       <h2 className="event-name">{event.name}</h2>
       <h3 className="event-icon">{event.icon}</h3>
       <div className="event-card-icons">
