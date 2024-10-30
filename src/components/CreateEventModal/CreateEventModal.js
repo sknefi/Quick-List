@@ -6,7 +6,7 @@ function StaticExample({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Pridať list</Modal.Title>
+        <Modal.Title>Create new list</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <CreateEventForm />
