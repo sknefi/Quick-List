@@ -1,9 +1,11 @@
 .app-tools-div {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 30px;
+    height: 5rem;
 }
 
 .icon-eye {
-    font-size: 48px;
+    font-size: 4rem;
 }

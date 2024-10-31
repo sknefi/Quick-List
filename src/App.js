@@ -16,12 +16,11 @@ const App = () => {
 
   return (
     <div style={divStyles}>
-      <AppHeader />
       {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
       <UsersProvider>
         <EventsProvider>
-          <AppTools />
           <BrowserRouter>
+            <AppHeader />
             <Routes>
               <Route index path="/" element={<Events />}></Route>
               <Route path="/:id" element={<EventDetail />}></Route>
@@ -29,7 +28,6 @@ const App = () => {
           </BrowserRouter>
         </EventsProvider>
       </UsersProvider>
-      <EventDetail />
     </div>
   );
 };

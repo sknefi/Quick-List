@@ -12,6 +12,7 @@ const EventsProvider = ({ children }) => {
         "04f0ba2765c2fd8e89d604c0fb7f6bae",
         "c13b6c6e17b749735950c09e41bd8449",
       ],
+      items: ["it1", "it2", "it3"],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
       archived: false,
       icon: "🍩",
@@ -22,6 +23,7 @@ const EventsProvider = ({ children }) => {
       members: ["04f0ba2765c2fd8e89d604c0fb7f6bae"],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
       archived: true,
+      items: ["it1", "it2", "it3"],
       icon: "🐻",
     },
     {
@@ -32,6 +34,7 @@ const EventsProvider = ({ children }) => {
         "8b2b893648d34fcc16a46abaf5ed3639",
         "c13b6c6e17b749735950c09e41bd8449",
       ],
+      items: ["it1", "it2", "it3"],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
       archived: true,
       icon: "🏙️",
@@ -42,6 +45,7 @@ const EventsProvider = ({ children }) => {
       members: [],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
       icon: "◎",
+      items: ["it1", "it2", "it3"],
       archived: false,
     },
   ]);

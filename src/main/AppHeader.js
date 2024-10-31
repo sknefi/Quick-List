@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "./logo.png";
+import { useNavigate } from "react-router-dom";
+import { FaUsers } from "react-icons/fa";
 
 const AppHeader = () => {
   const divStyles = {
@@ -14,13 +16,16 @@ const AppHeader = () => {
     height: "auto",
   };
 
-  const h1Styles = {
-    fontSize: "3rem",
-  };
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate("/");
+  }
+
   return (
     <div style={divStyles}>
-      <h1 style={h1Styles}>Quick List</h1>
-      <img src={logo} style={logoStyles} />
+      <FaUsers style={{ fontSize: "4rem"}}/>
+      <img src={logo} style={logoStyles} onClick={handleNavigate} />
     </div>
   );
 };

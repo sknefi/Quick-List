@@ -8,6 +8,8 @@ h2 {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 5rem;
+  margin: 20px 0;
 }
 
 .event-detail-icons {

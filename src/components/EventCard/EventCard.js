@@ -4,20 +4,32 @@ import ArchiveModal from "../ArchiveModal/ArchiveModal";
 import { FaTrash } from "react-icons/fa";
 import { FaFileArchive } from "react-icons/fa";
 import "./EventCard.css";
+import { useNavigate } from "react-router-dom";
 
 const EventCard = ({ event, loggedInUser }) => {
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate(`/${event.id}`);
+  }
+
   // handle deleteButton
   const [showBtnDelete, setShowBtnDelete] = useState(false);
   const handleCloseBtnDelete = () => setShowBtnDelete(false);
   const handleShowBtnDelete = () => setShowBtnDelete(true);
-  
+
   // handle archiveButton
   const [showBtnArchive, setShowBtnArchive] = useState(false);
   const handleCloseBtnArchive = () => setShowBtnArchive(false);
   const handleShowBtnArchive = () => setShowBtnArchive(true);
 
   return (
-    <div className={`event-card ${event.archived === true ? "event-card-archived-color" : ""}`}>
+    <div
+      className={`event-card ${
+        event.archived === true ? "event-card-archived-color" : ""
+      }`}
+      onClick={handleNavigate}
+    >
       <h2 className="event-name">{event.name}</h2>
       <h3 className="event-icon">{event.icon}</h3>
       <div className="event-card-icons">
