@@ -1,7 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { EventsContext } from "../../tech/contexts/EventsContext";
+import { useContext } from "react";
 
 function DeleteModal({ show, handleClose, event }) {
+  const { handleDeleteEvent } = useContext(EventsContext);
+
+  function handleDeleteButton(eventId) {
+    handleDeleteEvent(eventId);
+    handleClose();
+  }
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -15,7 +24,7 @@ function DeleteModal({ show, handleClose, event }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={() => handleDeleteButton(event.id)}>
             Delete
           </Button>
         </Modal.Footer>

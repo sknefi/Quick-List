@@ -1,7 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { EventsContext } from "../../tech/contexts/EventsContext";
+import { useContext } from "react";
 
 function ArchiveModal({ show, handleClose, event }) {
+  const { handleArchiveEvent } = useContext(EventsContext);
+
+  function handleArchiveButton(eventId) {
+    handleArchiveEvent(eventId);
+    handleClose();
+  }
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -15,7 +24,7 @@ function ArchiveModal({ show, handleClose, event }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={ () => handleArchiveButton(event.id)}>
             Archive
           </Button>
         </Modal.Footer>

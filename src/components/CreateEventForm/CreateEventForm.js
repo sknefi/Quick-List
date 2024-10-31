@@ -14,12 +14,17 @@ function CreateEventForm({ handleClose }) {
   const { loggedInUser } = useContext(UsersContext);
 
   const createEvent = (name, icon) => {
+    // musím vygenerovať dočasné ID, pretože keď mažem a archivujem potrebujem 
+    // mať id eventu (listu), inak by sa zmazali/zarchivovali všetky čo sú novovytvorené
+    const tempId = Math.random().toString(36) + Date.now().toString(36);
+
     return {
       name: name,
       members: [loggedInUser.id],
       owner: loggedInUser.id,
       archived: false,
       icon: icon,
+      id: tempId,
     };
   };
 

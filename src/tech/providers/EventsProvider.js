@@ -62,8 +62,37 @@ const EventsProvider = ({ children }) => {
   }
 
   function handleAddEvent(event) {
-    setAllEvents((current) => {
+    setAllEvents(() => {
       const newEvents = [...allEvents, event];
+
+      if (statusArchived) {
+        setEvents(newEvents);
+      } else {
+        setEvents(newEvents.filter((event) => !event.archived));
+      }
+      console.log("events: " + events);
+      return newEvents;
+    });
+    console.log("ALLevents: " + allEvents);
+  }
+
+  function handleArchiveEvent(eventId) {
+    setAllEvents(() => {
+      const newEvents = allEvents.map((event) =>
+        event.id === eventId ? { ...event, archived: true } : event
+      );
+      if (statusArchived) {
+        setEvents(newEvents);
+      } else {
+        setEvents(newEvents.filter((event) => !event.archived));
+      }
+      return newEvents;
+    });
+  }
+
+  function handleDeleteEvent(eventId) {
+    setAllEvents(() => {
+      const newEvents = allEvents.filter((event) => event.id !== eventId);
       if (statusArchived) {
         setEvents(newEvents);
       } else {
@@ -81,6 +110,8 @@ const EventsProvider = ({ children }) => {
       setStatusArchived: setStatusArchived,
     },
     handleAddEvent: handleAddEvent,
+    handleArchiveEvent: handleArchiveEvent,
+    handleDeleteEvent: handleDeleteEvent,
   };
 
   return (
