@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.png";
 import { useNavigate } from "react-router-dom";
-import { FaUsers } from "react-icons/fa";
+import ShowUsers from "../components/ShowUsers/ShowUsers";
 
 const AppHeader = () => {
   const divStyles = {
@@ -24,7 +24,7 @@ const AppHeader = () => {
 
   return (
     <div style={divStyles}>
-      <FaUsers style={{ fontSize: "4rem"}}/>
+      <ShowUsers/>
       <img src={logo} style={logoStyles} onClick={handleNavigate} />
     </div>
   );
