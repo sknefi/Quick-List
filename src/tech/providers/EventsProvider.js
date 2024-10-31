@@ -61,6 +61,18 @@ const EventsProvider = ({ children }) => {
     }
   }
 
+  function handleAddEvent(event) {
+    setAllEvents((current) => {
+      const newEvents = [...allEvents, event];
+      if (statusArchived) {
+        setEvents(newEvents);
+      } else {
+        setEvents(newEvents.filter((event) => !event.archived));
+      }
+      return newEvents;
+    });
+  }
+
   const handlerMap = {
     events: events,
     displayArchived: displayArchived,
@@ -68,7 +80,9 @@ const EventsProvider = ({ children }) => {
       statusArchived: statusArchived,
       setStatusArchived: setStatusArchived,
     },
+    handleAddEvent: handleAddEvent,
   };
+
   return (
     <EventsContext.Provider value={handlerMap}>
       {children}

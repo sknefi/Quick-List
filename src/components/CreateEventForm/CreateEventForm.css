@@ -1,0 +1,8 @@
+.create-list-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-create-list-form {
+    align-self: flex-end;
+}

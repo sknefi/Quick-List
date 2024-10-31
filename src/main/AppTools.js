@@ -15,21 +15,15 @@ const AppTools = () => {
     displayArchived(!statusArchivedMap.statusArchived);
   }
 
-  const [showCreateEventModal, setShowCreateEventModal] = useState(false)
+  const [showCreateEventModal, setShowCreateEventModal] = useState(false);
 
   return (
     <div className="app-tools-div">
       {statusArchivedMap.statusArchived && (
-        <IoMdEye
-          className="icon-eye"
-          onClick={handleClickArchived}
-        />
+        <IoMdEye className="icon-eye" onClick={handleClickArchived} />
       )}
       {!statusArchivedMap.statusArchived && (
-        <IoMdEyeOff
-          className="icon-eye"
-          onClick={handleClickArchived}
-        />
+        <IoMdEyeOff className="icon-eye" onClick={handleClickArchived} />
       )}
       <button onClick={() => setShowCreateEventModal(true)}>CREATE</button>
       <CreateEventModal

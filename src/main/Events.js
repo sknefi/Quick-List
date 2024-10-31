@@ -12,9 +12,9 @@ const AppBody = () => {
 
   return (
     <div className="events">
-      {events.map((event) => {
+      {events.map((event, index) => {
         return (
-          <EventCard key={event.id} event={event} loggedInUser={loggedInUser} />
+          <EventCard key={index} event={event} loggedInUser={loggedInUser} />
         );
       })}
     </div>
