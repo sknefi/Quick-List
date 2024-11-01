@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AppHeader from "./main/AppHeader";
 import Events from "./main/Events";
-import AppTools from "./main/AppTools";
 import EventDetail from "./main/EventDetail";
 
 import EventsProvider from "./tech/providers/EventsProvider";
 import UsersProvider from "./tech/providers/UsersProvider";
+import ItemsProvider from "./tech/providers/ItemsProvider";
 
 const App = () => {
   const divStyles = {
@@ -19,13 +19,15 @@ const App = () => {
       {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
       <UsersProvider>
         <EventsProvider>
-          <BrowserRouter>
-            <AppHeader />
-            <Routes>
-              <Route index path="/" element={<Events />}></Route>
-              <Route path="/:id" element={<EventDetail />}></Route>
-            </Routes>
-          </BrowserRouter>
+          <ItemsProvider>
+            <BrowserRouter>
+              <AppHeader />
+              <Routes>
+                <Route index path="/" element={<Events />}></Route>
+                <Route path="/:id" element={<EventDetail />}></Route>
+              </Routes>
+            </BrowserRouter>
+          </ItemsProvider>
         </EventsProvider>
       </UsersProvider>
     </div>

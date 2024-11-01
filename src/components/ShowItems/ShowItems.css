@@ -1,0 +1,16 @@
+.show-items {
+  width: 60vw;
+  margin: 40px auto;
+}
+
+.item-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.item-text {
+    font-size: 1.5rem;
+}

@@ -23,7 +23,7 @@ const EventsProvider = ({ children }) => {
       members: ["04f0ba2765c2fd8e89d604c0fb7f6bae"],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
       archived: true,
-      items: ["it1", "it2", "it3"],
+      items: ["it10", "it6", "it9"],
       icon: "🐻",
     },
     {
@@ -34,7 +34,7 @@ const EventsProvider = ({ children }) => {
         "8b2b893648d34fcc16a46abaf5ed3639",
         "c13b6c6e17b749735950c09e41bd8449",
       ],
-      items: ["it1", "it2", "it3"],
+      items: ["it5", "it7", "it8"],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
       archived: true,
       icon: "🏙️",
@@ -45,7 +45,7 @@ const EventsProvider = ({ children }) => {
       members: [],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
       icon: "◎",
-      items: ["it1", "it2", "it3"],
+      items: ["it4"],
       archived: false,
     },
   ]);
@@ -56,9 +56,9 @@ const EventsProvider = ({ children }) => {
   // premenná, ktorá sa posiela do handlerMapy a posiela tam buď všetky eventy alebo iba tie vyfiltrované
   const [events, setEvents] = useState(allEvents);
 
-  // určuje, ktoré eventy sa majú zobraziť
-  function displayArchived(x) {
-    if (x) {
+  // určuje, ktoré eventy sa majú zobraziť 
+  function displayArchived(status) {
+    if (status) {
       return setEvents(allEvents);
     } else {
       return setEvents(allEvents.filter((event) => !event.archived));

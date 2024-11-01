@@ -1,53 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ListGroup, Form, Button } from "react-bootstrap";
+import "./ShowItems.css";
+import { FaTrash } from "react-icons/fa";
+import { ItemsContext } from "../../tech/contexts/ItemsContext";
 
-const ShowItems = () => {
-  const [items, setItems] = useState([
-    {
-      id: "it1",
-      name: "Banan",
-      state: "done",
-    },
-    {
-      id: "it2",
-      name: "Horalka",
-      state: "pending",
-    },
-    {
-      id: "it3",
-      name: "Klobasa",
-      state: "pending",
-    },
-  ]);
-
-  // Toggle state between "done" and "pending"
-  const toggleState = (id) => {
-    const updatedItems = items.map((item) =>
-      item.id === id
-        ? { ...item, state: item.state === "pending" ? "done" : "pending" }
-        : item
-    );
-    setItems(updatedItems);
-  };
+const ShowItems = ({ items }) => {
+  const { deleteItem, changeItemState } = useContext(ItemsContext);
 
   return (
-    <div>
-      <h3>Todo List</h3>
+    <div className="show-items">
       <ListGroup>
         {items.map((item) => (
-          <ListGroup.Item key={item.id}>
+          // musí tu byť kontrola či existuje item, inak sa v komponente ItemsProvider 
+          //pri zmazaní itemu (deleteItem) pri filtrácii (.filter) prepíše vymazaná 
+          //hodnata na undefinied
+          item && 
+          <ListGroup.Item key={item.id} className="item-div">
             <Form.Check
               type="checkbox"
               checked={item.state === "done"}
-              onChange={() => toggleState(item.id)}
+              onChange={() => changeItemState(item.id)}
               label={item.name}
+              className="item-text"
             />
+            <FaTrash onClick={() => deleteItem(item.id)}/>
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Button variant="primary" className="mt-3">
-        Add Item
-      </Button>
     </div>
   );
 };

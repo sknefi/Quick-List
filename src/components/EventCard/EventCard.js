@@ -28,10 +28,14 @@ const EventCard = ({ event, loggedInUser }) => {
       className={`event-card ${
         event.archived === true ? "event-card-archived-color" : ""
       }`}
-      onClick={handleNavigate}
     >
-      <h2 className="event-name">{event.name}</h2>
-      <h3 className="event-icon">{event.icon}</h3>
+      <h2 className="event-name" onClick={handleNavigate}>
+        {event.name}
+      </h2>
+      <h3 className="event-icon" onClick={handleNavigate}>
+        {event.icon}
+      </h3>
+
       <div className="event-card-icons">
         {loggedInUser.id === event.owner && (
           <FaFileArchive

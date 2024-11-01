@@ -7,31 +7,17 @@ import ShowItems from "../components/ShowItems/ShowItems";
 import "./EventDetail.css";
 import { useParams } from "react-router-dom";
 import { EventsContext } from "../tech/contexts/EventsContext";
+import { ItemsContext } from "../tech/contexts/ItemsContext";
 
 const EventDetail = () => {
   const { id } = useParams();
   const { events } = useContext(EventsContext);
   const event = events.find((event) => event.id === id);
   const [showAll, setShowAll] = useState(true);
+  const { getEventItems } = useContext(ItemsContext);
 
-  const items = [
-    {
-      id: "it1",
-      name: "Banan",
-      state: "done",
-    },
-    {
-      id: "it2",
-      name: "Horalka",
-      state: "pending",
-    },
-    {
-      id: "it3",
-      name: "Klobasa",
-      state: "pending",
-    },
-  ];
-
+  const items = getEventItems(event);
+  console.log(items)
   return (
     <div>
       <div className="event-detail">
