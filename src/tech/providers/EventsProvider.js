@@ -56,7 +56,7 @@ const EventsProvider = ({ children }) => {
   // premenná, ktorá sa posiela do handlerMapy a posiela tam buď všetky eventy alebo iba tie vyfiltrované
   const [events, setEvents] = useState(allEvents);
 
-  // určuje, ktoré eventy sa majú zobraziť 
+  // určuje, ktoré eventy sa majú zobraziť
   function displayArchived(status) {
     if (status) {
       return setEvents(allEvents);
@@ -65,10 +65,12 @@ const EventsProvider = ({ children }) => {
     }
   }
 
+  // pridá event k ostatným eventom
   function handleAddEvent(event) {
     setAllEvents(() => {
       const newEvents = [...allEvents, event];
 
+      // ak je zapnutá ikonka oko - show archived
       if (statusArchived) {
         setEvents(newEvents);
       } else {
@@ -80,11 +82,14 @@ const EventsProvider = ({ children }) => {
     console.log("ALLevents: " + allEvents);
   }
 
+  // zarchivuje event
   function handleArchiveEvent(eventId) {
     setAllEvents(() => {
       const newEvents = allEvents.map((event) =>
         event.id === eventId ? { ...event, archived: true } : event
       );
+
+      // ak je zapnutá ikonka oko - show archived
       if (statusArchived) {
         setEvents(newEvents);
       } else {
@@ -94,14 +99,36 @@ const EventsProvider = ({ children }) => {
     });
   }
 
+  // vymaže event
   function handleDeleteEvent(eventId) {
     setAllEvents(() => {
       const newEvents = allEvents.filter((event) => event.id !== eventId);
+
+      // ak je zapnutá ikonka oko - show archived
       if (statusArchived) {
         setEvents(newEvents);
       } else {
         setEvents(newEvents.filter((event) => !event.archived));
       }
+      return newEvents;
+    });
+  }
+
+  function handleAddItemToEvent(eventId, itemId) {
+    setAllEvents((currentEvents) => {
+      const newEvents = currentEvents.map((event) => {
+        if (event.id === eventId) {
+          return { ...event, items: [...event.items, itemId] };
+        }
+        return event;
+      });
+
+      setEvents(
+        statusArchived
+          ? newEvents
+          : newEvents.filter((event) => !event.archived)
+      );
+
       return newEvents;
     });
   }
@@ -116,6 +143,7 @@ const EventsProvider = ({ children }) => {
     handleAddEvent: handleAddEvent,
     handleArchiveEvent: handleArchiveEvent,
     handleDeleteEvent: handleDeleteEvent,
+    handleAddItemToEvent: handleAddItemToEvent,
   };
 
   return (

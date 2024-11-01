@@ -11,8 +11,6 @@ const AppBody = () => {
   // pre zobrazenie archive/delete buttnu na karticke
   const { loggedInUser } = useContext(UsersContext);
 
-
-
   return (
     <div>
       <AppTools />

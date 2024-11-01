@@ -61,15 +61,6 @@ const ItemsProvider = ({ children }) => {
     const eventItems = event.items.map((itemId) =>
       items.find((item) => item.id === itemId)
     );
-    // .sort((a, b) => {
-    //   if (a.state === "pending" && b.state === "done") {
-    //     return -1; // a b ostane
-    //   } else if (a.state === "done" && b.state === "pending") {
-    //     return 1; // posunie a za b
-    //   }
-    //   return 0; // nerieši ak sú rovnake
-    // });
-
     return eventItems;
   }
 
@@ -84,6 +75,12 @@ const ItemsProvider = ({ children }) => {
     // console.log(items)
   }
 
+  // pridanie noveho itemu k ostatnym
+  function handleAddItemToItems(newItem) {
+    setItems((curr) => [...curr, newItem]);
+    // console.log(items);
+  }
+
   function deleteItem(itemId) {
     const changedItems = items.filter((item) => item.id !== itemId);
     setItems(changedItems);
@@ -95,6 +92,8 @@ const ItemsProvider = ({ children }) => {
     getEventItems: getEventItems,
     changeItemState: changeItemState,
     deleteItem: deleteItem,
+    handleAddItemToItems: handleAddItemToItems,
+
   };
   return (
     <ItemsContext.Provider value={handlerMap}>{children}</ItemsContext.Provider>

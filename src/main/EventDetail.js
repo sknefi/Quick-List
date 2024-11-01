@@ -8,16 +8,18 @@ import "./EventDetail.css";
 import { useParams } from "react-router-dom";
 import { EventsContext } from "../tech/contexts/EventsContext";
 import { ItemsContext } from "../tech/contexts/ItemsContext";
+import AddItemModal from "../components/AddItemModal/AddItemModal";
 
 const EventDetail = () => {
   const { id } = useParams();
   const { events } = useContext(EventsContext);
-  const event = events.find((event) => event.id === id);
-  const [showAll, setShowAll] = useState(true);
   const { getEventItems } = useContext(ItemsContext);
 
+  const event = events.find((event) => event.id === id);
   const items = getEventItems(event);
-  console.log(items)
+
+  const [showAll, setShowAll] = useState(true);
+  const [showAddItemModal, setShowAddItemModal] = useState(false);
   return (
     <div>
       <div className="event-detail">
@@ -38,11 +40,19 @@ const EventDetail = () => {
               className="event-detail-icon"
             />
           )}
-          <IoIosAddCircleOutline className="event-detail-icon" />
+          <IoIosAddCircleOutline
+            className="event-detail-icon"
+            onClick={() => setShowAddItemModal(!showAddItemModal)}
+          />
           <IoIosSettings className="event-detail-icon" />
         </div>
       </div>
       <ShowItems items={items} />
+      <AddItemModal
+        show={showAddItemModal}
+        handleClose={() => setShowAddItemModal(false)}
+        eventId={event.id}
+      />
     </div>
   );
 };
