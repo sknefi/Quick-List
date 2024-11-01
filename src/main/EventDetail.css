@@ -21,6 +21,10 @@ h2 {
   font-size: 4rem;
 }
 
+.icon-plus {
+  margin-left: 10px;
+}
+
 .event-info {
   display: flex;
   flex-direction: row;

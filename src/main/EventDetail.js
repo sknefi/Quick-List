@@ -2,13 +2,13 @@ import React, { useContext, useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoIosSettings } from "react-icons/io";
 import ShowItems from "../components/ShowItems/ShowItems";
 import "./EventDetail.css";
 import { useParams } from "react-router-dom";
 import { EventsContext } from "../tech/contexts/EventsContext";
 import { ItemsContext } from "../tech/contexts/ItemsContext";
 import AddItemModal from "../components/AddItemModal/AddItemModal";
+import ShowOptions from "../components/ShowOptions/ShowOptions";
 
 const EventDetail = () => {
   const { id } = useParams();
@@ -41,10 +41,10 @@ const EventDetail = () => {
             />
           )}
           <IoIosAddCircleOutline
-            className="event-detail-icon"
+            className="event-detail-icon icon-plus"
             onClick={() => setShowAddItemModal(!showAddItemModal)}
           />
-          <IoIosSettings className="event-detail-icon" />
+          <ShowOptions event={event} />
         </div>
       </div>
       <ShowItems items={items} />
