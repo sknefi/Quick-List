@@ -15,11 +15,16 @@ const EventDetail = () => {
   const { events } = useContext(EventsContext);
   const { getEventItems } = useContext(ItemsContext);
 
-  const event = events.find((event) => event.id === id);
-  const items = getEventItems(event);
-
   const [showAll, setShowAll] = useState(true);
   const [showAddItemModal, setShowAddItemModal] = useState(false);
+
+  const event = events.find((event) => event.id === id);
+  // chybné ID v url adrese
+  if (!event) {
+    return <div>This list doesnt exist</div>;
+  }
+  const items = getEventItems(event);
+
   return (
     <div>
       <div className="event-detail">
