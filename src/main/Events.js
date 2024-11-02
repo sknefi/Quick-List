@@ -10,12 +10,13 @@ const AppBody = () => {
   const { events } = useContext(EventsContext);
   // pre zobrazenie archive/delete buttnu na karticke
   const { loggedInUser } = useContext(UsersContext);
+  const loggedInUserEvents =  events.filter((event) => event.members.includes(loggedInUser.id))
 
   return (
     <div>
       <AppTools />
       <div className="events">
-        {events.map((event, index) => {
+        {loggedInUserEvents.map((event, index) => {
           return (
             <EventCard key={index} event={event} loggedInUser={loggedInUser} />
           );

@@ -23,7 +23,10 @@ const EventsProvider = ({ children }) => {
     {
       id: "141eea2765c2fd8e89d604c0fb7b0919",
       name: "Pets",
-      members: ["04f0ba2765c2fd8e89d604c0fb7f6bae"],
+      members: [
+        "04f0ba2765c2fd8e89d604c0fb7f6bae",
+        "lnxzklcnqiwj319ioafksnlzans",
+      ],
       owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
       archived: true,
       items: ["it10", "it6", "it9"],
@@ -36,6 +39,7 @@ const EventsProvider = ({ children }) => {
         "04f0ba2765c2fd8e89d604c0fb7f6bae",
         "8b2b893648d34fcc16a46abaf5ed3639",
         "c13b6c6e17b749735950c09e41bd8449",
+        "paisjdkn1o23j1jaspokn"
       ],
       items: ["it5", "it7", "it8"],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
@@ -45,11 +49,53 @@ const EventsProvider = ({ children }) => {
     {
       id: "ce01b6c6e17b749735950c09e41bde012",
       name: "Random",
-      members: [],
+      members: ["8b2b893648d34fcc16a46abaf5ed3639"],
       owner: "8b2b893648d34fcc16a46abaf5ed3639",
       icon: "◎",
       items: ["it4"],
       archived: false,
+    },
+    {
+      id: "80f0ba2765c2fd8e89d604c0fb7beasdq",
+      name: "Vegetables",
+      members: [
+        "04f0ba2765c2fd8e89d604c0fb7f6bae",
+        "lnxzklcnqiwj319ioafksnlzans",
+        "paisjdkn1o23j1jaspokn",
+        "8b2b893648d34fcc16a46abaf5ed3639"
+      ],
+      items: ["it10", "it11", "it12"],
+      owner: "paisjdkn1o23j1jaspokn",
+      archived: false,
+      icon: "💲",
+    },
+    {
+      id: "81f0ba2765c2fd8e89d604c0fb7asdjqbe123po",
+      name: "Washing",
+      members: [
+        "04f0ba2765c2fd8e89d604c0fb7f6bae",
+        "c13b6c6e17b749735950c09e41bd8449",
+        "lnxzklcnqiwj319ioafksnlzans",
+        "8b2b893648d34fcc16a46abaf5ed3639"
+      ],
+      items: ["it13", "it14"],
+      owner: "lnxzklcnqiwj319ioafksnlzans",
+      archived: true,
+      icon: "🥁",
+    },
+    {
+      id: "811231f0ba2765c2fd8e89d604c0fb7be1zxckl23",
+      name: "Bakery",
+      members: [
+        "04f0ba2765c2fd8e89d604c0fb7f6bae",
+        "c13b6c6e17b749735950c09e41bd8449",
+        "lnxzklcnqiwj319ioafksnlzans",
+        "paisjdkn1o23j1jaspokn"
+      ],
+      items: ["it15", "it16", "it17"],
+      owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
+      archived: true,
+      icon: "⛹🏿",
     },
   ]);
 

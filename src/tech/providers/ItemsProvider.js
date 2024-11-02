@@ -47,13 +47,49 @@ const ItemsProvider = ({ children }) => {
     {
       id: "it9",
       name: "Madrac",
-      state: "done",
+      state: "pending",
     },
     {
       id: "it10",
-      name: "Drevo",
+      name: "papier",
+      state: "pending",
+    },
+    {
+      id: "it11",
+      name: "postel",
       state: "done",
     },
+    {
+      id: "it12",
+      name: "mikina",
+      state: "pending",
+    },
+    {
+      id: "it13",
+      name: "plast",
+      state: "done",
+    },
+    {
+      id: "it14",
+      name: "vankus",
+      state: "pending",
+    },
+    {
+      id: "it15",
+      name: "okno",
+      state: "done",
+    },
+    {
+      id: "it16",
+      name: "letak",
+      state: "done",
+    },
+    {
+      id: "it17",
+      name: "flasa",
+      state: "pending",
+    },
+
   ]);
 
   // getne všetky itemy z konkretneho Listu v detaile

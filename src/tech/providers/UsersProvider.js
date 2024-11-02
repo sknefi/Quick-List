@@ -5,7 +5,7 @@ import { UsersContext } from "../contexts/UsersContext";
 const UsersProvider = ({ children }) => {
   const [allUsers, setAllUsers] = useState([
     {
-      name: "admin",
+      name: "Filip",
       surname: "admin",
       email: "admin@admin.admin",
       id: "04f0ba2765c2fd8e89d604c0fb7f6bae",
@@ -18,13 +18,19 @@ const UsersProvider = ({ children }) => {
       email: "david@example.com",
       photo: "david.jpg",
     },
-
     {
-      name: "John",
-      surname: "Doe",
-      email: "johndoe@example.com",
+      name: "TK24",
+      surname: "Bey",
+      email: "tkcko@example.com",
       photo: "a",
-      id: "c13b6c6e17b749735950c09e41bd8449",
+      id: "paisjdkn1o23j1jaspokn",
+    },
+    {
+      name: "Vlada",
+      surname: "Maskos",
+      email: "vladimirus@example.com",
+      photo: "a",
+      id: "lnxzklcnqiwj319ioafksnlzans",
     },
   ]);
 
@@ -36,9 +42,15 @@ const UsersProvider = ({ children }) => {
     photo: "",
   });
 
+  function handleChangeLoggedInUser(userId) {
+    const newUser = allUsers.find((user) => user.id === userId);
+    setLoggedInUser(newUser);
+  }
+
   const hanlderMap = {
     users: allUsers,
-    loggedInUser: loggedInUser
+    loggedInUser: loggedInUser,
+    handleChangeLoggedInUser: handleChangeLoggedInUser,
   };
   return (
     <UsersContext.Provider value={hanlderMap}>{children}</UsersContext.Provider>
