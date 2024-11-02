@@ -6,7 +6,7 @@ import { ItemsContext } from "../../tech/contexts/ItemsContext";
 
 const ShowItems = ({ items }) => {
   const { deleteItem, changeItemState } = useContext(ItemsContext);
-  console.log(items)
+  // console.log(items)
   return (
     <div className="show-items">
       <ListGroup>

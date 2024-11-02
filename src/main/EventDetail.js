@@ -18,23 +18,16 @@ const EventDetail = () => {
   const [showAll, setShowAll] = useState(true);
   const [showAddItemModal, setShowAddItemModal] = useState(false);
 
-  const [filteredItems, setFilteredItems] = [];
-
   const event = events.find((event) => event.id === id);
   // chybné ID v url adrese
   if (!event) {
     return <div>This shopping list doesnt exist</div>;
   }
+  const itemsToShow = getEventItems(event);
 
-  const items = getEventItems(event);
-  setFilteredItems(items);
-  function changeViewItems() {
-    if (showAddItemModal) {
-      items = items.filter((item) => item.state === "pending");
-    }
-    setShowAddItemModal(!showAddItemModal);
-  }
-
+  const items = showAll
+    ? itemsToShow
+    : itemsToShow.filter((item) => item && item.state === "pending");
   return (
     <div>
       <div className="event-detail">
@@ -44,11 +37,14 @@ const EventDetail = () => {
         </div>
         <div className="event-detail-icons">
           {showAll && (
-            <IoMdEye onClick={changeViewItems} className="event-detail-icon" />
+            <IoMdEye
+              onClick={() => setShowAll(!showAll)}
+              className="event-detail-icon"
+            />
           )}
           {!showAll && (
             <IoMdEyeOff
-              onClick={changeViewItems}
+              onClick={() => setShowAll(!showAll)}
               className="event-detail-icon"
             />
           )}
