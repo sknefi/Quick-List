@@ -10,6 +10,7 @@ import { FaFileArchive } from "react-icons/fa";
 import { UsersContext } from "../../tech/contexts/UsersContext";
 import EventMembersModal from "../EventMembersModal/EventMembersModal";
 import AddMembersModal from "../AddMembersModal/AddMembersModal";
+import ChangeEventNameModal from "../ChangeEventNameModal/ChangeEventNameModal";
 
 function ShowOptions({ event }) {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function ShowOptions({ event }) {
   const [showBtnArchive, setShowBtnArchive] = useState(false);
   const [showBtnMembers, setShowBtnMembers] = useState(false);
   const [showBtnAddMembers, setShowBtnAddMembers] = useState(false);
+  const [showBtnChangeEventName, setShowBtnChangeEventName] = useState(false);
 
   function handleDeleteButton() {
     setShowBtnDelete(false);
@@ -32,7 +34,10 @@ function ShowOptions({ event }) {
 
       <Dropdown.Menu>
         {event.owner === loggedInUser.id && (
-          <Dropdown.Item className="settings-text">
+          <Dropdown.Item
+            className="settings-text"
+            onClick={() => setShowBtnChangeEventName(true)}
+          >
             Change name of list
           </Dropdown.Item>
         )}
@@ -81,6 +86,11 @@ function ShowOptions({ event }) {
       <AddMembersModal
         handleClose={() => setShowBtnAddMembers(false)}
         show={showBtnAddMembers}
+        event={event}
+      />
+      <ChangeEventNameModal
+        handleClose={() => setShowBtnChangeEventName(false)}
+        show={showBtnChangeEventName}
         event={event}
       />
     </Dropdown>

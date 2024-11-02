@@ -162,8 +162,12 @@ const EventsProvider = ({ children }) => {
     setAllEvents((current) => [...current, changedEvent]);
   }
 
-  function handleChangeEventName() {
-    
+  // zmení meno eventu
+  function handleChangeEventName(eventId, newName, newIcon) {
+    let changedEvent = allEvents.find((event) => event.id === eventId);
+    changedEvent.name = newName;
+    changedEvent.icon = newIcon;
+    setAllEvents((current) => [...current, changedEvent]);
   }
 
   const handlerMap = {
@@ -180,6 +184,7 @@ const EventsProvider = ({ children }) => {
     handleGetEventMembers: handleGetEventMembers,
     handleRemoveUserFromEvent: handleRemoveUserFromEvent,
     handleAddUserForEvent: handleAddUserForEvent,
+    handleChangeEventName: handleChangeEventName,
   };
 
   return (
