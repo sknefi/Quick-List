@@ -58,6 +58,7 @@ const ItemsProvider = ({ children }) => {
 
   // getne všetky itemy z konkretneho Listu v detaile
   function getEventItems(event) {
+    // console.log(event);
     const eventItems = event.items.map((itemId) =>
       items.find((item) => item.id === itemId)
     );
@@ -93,7 +94,6 @@ const ItemsProvider = ({ children }) => {
     changeItemState: changeItemState,
     deleteItem: deleteItem,
     handleAddItemToItems: handleAddItemToItems,
-
   };
   return (
     <ItemsContext.Provider value={handlerMap}>{children}</ItemsContext.Provider>

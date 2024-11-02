@@ -79,10 +79,10 @@ const EventsProvider = ({ children }) => {
       } else {
         setEvents(newEvents.filter((event) => !event.archived));
       }
-      console.log("events: " + events);
+      // console.log("events: " + events);
       return newEvents;
     });
-    console.log("ALLevents: " + allEvents);
+    // console.log("ALLevents: " + allEvents);
   }
 
   // zarchivuje event

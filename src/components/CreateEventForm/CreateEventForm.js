@@ -22,6 +22,7 @@ function CreateEventForm({ handleClose }) {
       name: name,
       members: [loggedInUser.id],
       owner: loggedInUser.id,
+      items: [],
       archived: false,
       icon: icon,
       id: tempId,

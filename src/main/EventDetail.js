@@ -24,6 +24,7 @@ const EventDetail = () => {
     return <div>This list doesnt exist</div>;
   }
   const items = getEventItems(event);
+  
 
   return (
     <div>
