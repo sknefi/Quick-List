@@ -1,0 +1,8 @@
+.add-members-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-add-user {
+    font-size: 1.5rem;
+}

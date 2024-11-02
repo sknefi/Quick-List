@@ -162,6 +162,10 @@ const EventsProvider = ({ children }) => {
     setAllEvents((current) => [...current, changedEvent]);
   }
 
+  function handleChangeEventName() {
+    
+  }
+
   const handlerMap = {
     events: events,
     displayArchived: displayArchived,
