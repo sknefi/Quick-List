@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { EventsContext } from "../contexts/EventsContext";
+import { UsersContext } from "../contexts/UsersContext";
 
 const EventsProvider = ({ children }) => {
+  const { users } = useContext(UsersContext);
+
   // fetch na EventsList
   const [allEvents, setAllEvents] = useState([
     {
@@ -114,6 +117,7 @@ const EventsProvider = ({ children }) => {
     });
   }
 
+  // pridá id itemu do event.items
   function handleAddItemToEvent(eventId, itemId) {
     setAllEvents((currentEvents) => {
       const newEvents = currentEvents.map((event) => {
@@ -133,6 +137,31 @@ const EventsProvider = ({ children }) => {
     });
   }
 
+  // vráti všetkých memberov v danom evente
+  function handleGetEventMembers(event) {
+    const eventMembers = event.members.map((memberId) =>
+      users.find((user) => user.id === memberId)
+    );
+    return eventMembers;
+  }
+
+  // pridá user id do listu event.members pre daný event
+  function handleAddUserForEvent(userId, eventId) {
+    let changedEvent = allEvents.find((event) => event.id === eventId);
+    changedEvent.members.push(userId);
+    setAllEvents((current) => [...current, changedEvent]);
+  }
+
+  // odstráni userové id z listu event.members z daného eventu
+  function handleRemoveUserFromEvent(userId, eventId) {
+    let changedEvent = allEvents.find((event) => event.id === eventId);
+    const changedMembers = changedEvent.members.filter(
+      (memberId) => memberId !== userId
+    );
+    changedEvent.members = changedMembers;
+    setAllEvents((current) => [...current, changedEvent]);
+  }
+
   const handlerMap = {
     events: events,
     displayArchived: displayArchived,
@@ -144,6 +173,9 @@ const EventsProvider = ({ children }) => {
     handleArchiveEvent: handleArchiveEvent,
     handleDeleteEvent: handleDeleteEvent,
     handleAddItemToEvent: handleAddItemToEvent,
+    handleGetEventMembers: handleGetEventMembers,
+    handleRemoveUserFromEvent: handleRemoveUserFromEvent,
+    handleAddUserForEvent: handleAddUserForEvent,
   };
 
   return (

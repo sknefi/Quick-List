@@ -8,12 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { FaFileArchive } from "react-icons/fa";
 import { UsersContext } from "../../tech/contexts/UsersContext";
+import EventMembersModal from "../EventMembersModal/EventMembersModal";
 
 function ShowOptions({ event }) {
   const navigate = useNavigate();
   const { loggedInUser } = useContext(UsersContext);
+
   const [showBtnDelete, setShowBtnDelete] = useState(false);
   const [showBtnArchive, setShowBtnArchive] = useState(false);
+  const [showBtnMembers, setShowBtnMembers] = useState(false);
 
   function handleDeleteButton() {
     setShowBtnDelete(false);
@@ -27,12 +30,19 @@ function ShowOptions({ event }) {
 
       <Dropdown.Menu>
         {event.owner === loggedInUser.id && (
-          <Dropdown.Item className="settings-text">Change name of list</Dropdown.Item>
+          <Dropdown.Item className="settings-text">
+            Change name of list
+          </Dropdown.Item>
         )}
         {event.owner === loggedInUser.id && (
           <Dropdown.Item className="settings-text">Add members</Dropdown.Item>
         )}
-        <Dropdown.Item className="settings-text">Show members</Dropdown.Item>
+        <Dropdown.Item
+          className="settings-text"
+          onClick={() => setShowBtnMembers(true)}
+        >
+          Show members
+        </Dropdown.Item>
         <Dropdown.Item
           onClick={() => setShowBtnArchive(true)}
           className="settings-buttons"
@@ -55,6 +65,11 @@ function ShowOptions({ event }) {
         event={event}
         handleClose={handleDeleteButton}
         show={showBtnDelete}
+      />
+      <EventMembersModal
+        handleClose={() => setShowBtnMembers(false)}
+        show={showBtnMembers}
+        event={event}
       />
     </Dropdown>
   );
