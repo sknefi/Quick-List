@@ -147,27 +147,36 @@ const EventsProvider = ({ children }) => {
 
   // pridá user id do listu event.members pre daný event
   function handleAddUserForEvent(userId, eventId) {
-    let changedEvent = allEvents.find((event) => event.id === eventId);
-    changedEvent.members.push(userId);
-    setAllEvents((current) => [...current, changedEvent]);
+    const changedEvent = allEvents.map((event) => {
+      if (event.id === eventId) {
+        event.members.push(userId);
+      }
+      return event;
+    });
+    setAllEvents(changedEvent);
   }
 
   // odstráni userové id z listu event.members z daného eventu
   function handleRemoveUserFromEvent(userId, eventId) {
-    let changedEvent = allEvents.find((event) => event.id === eventId);
-    const changedMembers = changedEvent.members.filter(
-      (memberId) => memberId !== userId
-    );
-    changedEvent.members = changedMembers;
-    setAllEvents((current) => [...current, changedEvent]);
+    const changedEvents = allEvents.map((event) => {
+      if (event.id === eventId) {
+        event.members = event.members.filter((memberId) => memberId !== userId);
+      }
+      return event;
+    });
+    setAllEvents(changedEvents);
   }
 
   // zmení meno eventu
   function handleChangeEventName(eventId, newName, newIcon) {
-    let changedEvent = allEvents.find((event) => event.id === eventId);
-    changedEvent.name = newName;
-    changedEvent.icon = newIcon;
-    setAllEvents((current) => [...current, changedEvent]);
+    const changedEvents = allEvents.map((event) => {
+      if (event.id === eventId) {
+        event.name = newName;
+        event.icon = newIcon;
+      }
+      return event;
+    });
+    setAllEvents(changedEvents);
   }
 
   const handlerMap = {
