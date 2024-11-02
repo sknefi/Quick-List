@@ -179,6 +179,16 @@ const EventsProvider = ({ children }) => {
     setAllEvents(changedEvents);
   }
 
+  function handleLeaveList(eventId, userId) {
+    const changedEvents = allEvents.map((event) => {
+      if (event.id === eventId) {
+        event.members = event.members.filter((memberId) => memberId !== userId);
+      }
+      return event;
+    });
+    setAllEvents(changedEvents);
+  }
+
   const handlerMap = {
     events: events,
     displayArchived: displayArchived,
@@ -194,6 +204,7 @@ const EventsProvider = ({ children }) => {
     handleRemoveUserFromEvent: handleRemoveUserFromEvent,
     handleAddUserForEvent: handleAddUserForEvent,
     handleChangeEventName: handleChangeEventName,
+    handleLeaveList: handleLeaveList,
   };
 
   return (

@@ -21,7 +21,7 @@ const ChangeEventNameForm = ({ event, handleClose }) => {
         <Form.Control
           type="text"
           placeholder="List name"
-          onBlur={(e) => setNewEventName(e.target.value)}
+          onChange={(e) => setNewEventName(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicIcon">

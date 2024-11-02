@@ -30,7 +30,7 @@ function AddItemForm({ eventId, handleClose }) {
         <Form.Control
           type="text"
           placeholder="Item name"
-          onBlur={(e) => setNewItemName(e.target.value)}
+          onChange={(e) => setNewItemName(e.target.value)}
         />
       </Form.Group>
 

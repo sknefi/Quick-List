@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./CreateEventForm.css";
 import { useContext, useState } from "react";
-import IconPickerComponent from "../IconPickerComponent/IconPickerComponent";
 import { UsersContext } from "../../tech/contexts/UsersContext";
 import { EventsContext } from "../../tech/contexts/EventsContext";
 

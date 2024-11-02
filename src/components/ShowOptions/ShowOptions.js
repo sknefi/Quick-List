@@ -11,6 +11,7 @@ import { UsersContext } from "../../tech/contexts/UsersContext";
 import EventMembersModal from "../EventMembersModal/EventMembersModal";
 import AddMembersModal from "../AddMembersModal/AddMembersModal";
 import ChangeEventNameModal from "../ChangeEventNameModal/ChangeEventNameModal";
+import LeaveEventModal from "../LeaveEventModal/LeaveEventModal";
 
 function ShowOptions({ event }) {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function ShowOptions({ event }) {
   const [showBtnMembers, setShowBtnMembers] = useState(false);
   const [showBtnAddMembers, setShowBtnAddMembers] = useState(false);
   const [showBtnChangeEventName, setShowBtnChangeEventName] = useState(false);
+  const [showBtnLeaveEvent, setShowBtnLeaveEvent] = useState(false);
 
   function handleDeleteButton() {
     setShowBtnDelete(false);
@@ -55,18 +57,30 @@ function ShowOptions({ event }) {
         >
           Show members
         </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => setShowBtnArchive(true)}
-          className="settings-buttons"
-        >
-          <FaFileArchive />
-        </Dropdown.Item>
-        <Dropdown.Item
-          onClick={() => setShowBtnDelete(true)}
-          className="settings-buttons"
-        >
-          <FaTrash />
-        </Dropdown.Item>
+        {event.owner !== loggedInUser.id && (
+          <Dropdown.Item
+            className="settings-text"
+            onClick={() => setShowBtnLeaveEvent(true)}
+          >
+            Leave list
+          </Dropdown.Item>
+        )}
+        {loggedInUser.id === event.owner && (
+          <Dropdown.Item
+            onClick={() => setShowBtnArchive(true)}
+            className="settings-buttons"
+          >
+            <FaFileArchive />
+          </Dropdown.Item>
+        )}
+        {loggedInUser.id === event.owner && (
+          <Dropdown.Item
+            onClick={() => setShowBtnDelete(true)}
+            className="settings-buttons"
+          >
+            <FaTrash />
+          </Dropdown.Item>
+        )}
       </Dropdown.Menu>
       <ArchiveModal
         event={event}
@@ -91,6 +105,11 @@ function ShowOptions({ event }) {
       <ChangeEventNameModal
         handleClose={() => setShowBtnChangeEventName(false)}
         show={showBtnChangeEventName}
+        event={event}
+      />
+      <LeaveEventModal
+        handleClose={() => setShowBtnLeaveEvent(false)}
+        show={showBtnLeaveEvent}
         event={event}
       />
     </Dropdown>

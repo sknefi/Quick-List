@@ -21,10 +21,10 @@ const EventDetail = () => {
   const event = events.find((event) => event.id === id);
   // chybné ID v url adrese
   if (!event) {
-    return <div>This list doesnt exist</div>;
+    return <div>This shopping list doesnt exist</div>;
   }
   const items = getEventItems(event);
-  
+
 
   return (
     <div>
