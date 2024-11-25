@@ -11,7 +11,7 @@ const itemSchema = {
 	required: ["name", "state"],
 	additionalProperties: false,
   };
-  
+
 const schema = {
 	type: "object",
 	properties: {

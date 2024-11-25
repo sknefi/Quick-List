@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config(); // Load environment variables from .env file
 
 mongoose
-  .connect(
-    "mongodb+srv://filipkarika1:JEc2DIn3YWzdiON9@cluster0.usgh8.mongodb.net/"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("🥳🎉 Connected to db"))
-  .catch(() => console.log("💀❌ Connection failed!"));
+  .catch(() => console.log("💀❌ Connection to db failed!"));

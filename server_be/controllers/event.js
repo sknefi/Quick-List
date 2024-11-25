@@ -7,12 +7,14 @@ const deleteAbl = require("../abl/event_abl/deleteAbl.js");
 const createAbl = require('../abl/event_abl/createAbl.js');
 const updateAbl = require('../abl/event_abl/updateAbl.js');
 
+const { roleGuard } = require("../helpers/RoleGuard.js");
+
 // CRUD + LIST
 
 // EVERYTHING works, eventCreate and eventDelete tests needed
 
 // CREATE EVENT
-router.post("/create", (req, res) => {
+router.post("/create", roleGuard("createEvent"), (req, res) => {
 	createAbl(req, res);
 });
 
@@ -22,7 +24,7 @@ router.get("/get", (req, res) => {
 });
 
 // UPDATE EVENT
-router.put("/update", (req, res) => {
+router.put("/update", roleGuard("createEvent"), (req, res) => {
 	updateAbl(req, res);
 });
 

@@ -33,7 +33,6 @@ async function getAbl(req, res) {
         message: `event ${reqParams.id} not found`,
       });
       return;
-
     }
 
     res.json(event);
