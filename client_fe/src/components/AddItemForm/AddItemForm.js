@@ -2,11 +2,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useContext, useState } from "react";
 import { EventsContext } from "../../tech/contexts/EventsContext";
-import { ItemsContext } from "../../tech/contexts/ItemsContext";
 
 function AddItemForm({ eventId, handleClose }) {
   const { handleAddItemToEvent } = useContext(EventsContext);
-  const { handleAddItemToItems } = useContext(ItemsContext);
 
   const [newItemName, setNewItemName] = useState("");
 
@@ -18,8 +16,7 @@ function AddItemForm({ eventId, handleClose }) {
       name: newItemName,
       state: "pending",
     };
-    handleAddItemToItems(newItem);  // cely objekt do listu
-    handleAddItemToEvent(eventId, tempId); // iba ID do event.items
+    handleAddItemToEvent(eventId, newItem);
     handleClose();
   };
 

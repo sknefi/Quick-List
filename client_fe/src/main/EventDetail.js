@@ -6,24 +6,22 @@ import ShowItems from "../components/ShowItems/ShowItems";
 import "./EventDetail.css";
 import { useParams } from "react-router-dom";
 import { EventsContext } from "../tech/contexts/EventsContext";
-import { ItemsContext } from "../tech/contexts/ItemsContext";
 import AddItemModal from "../components/AddItemModal/AddItemModal";
 import ShowOptions from "../components/ShowOptions/ShowOptions";
 
 const EventDetail = () => {
   const { id } = useParams();
-  const { events } = useContext(EventsContext);
-  const { getEventItems } = useContext(ItemsContext);
+  const { events, getEvent } = useContext(EventsContext);
 
   const [showAll, setShowAll] = useState(true);
   const [showAddItemModal, setShowAddItemModal] = useState(false);
 
-  const event = events.find((event) => event.id === id);
+  const event = getEvent(id);
   // chybné ID v url adrese
   if (!event) {
     return <div>This shopping list doesnt exist</div>;
   }
-  const itemsToShow = getEventItems(event);
+  const itemsToShow = event.items;
 
   const items = showAll
     ? itemsToShow
@@ -55,7 +53,7 @@ const EventDetail = () => {
           <ShowOptions event={event} />
         </div>
       </div>
-      <ShowItems items={items} />
+      <ShowItems items={items} event={event} />
       <AddItemModal
         show={showAddItemModal}
         handleClose={() => setShowAddItemModal(false)}

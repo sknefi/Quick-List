@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { ListGroup, Form, Button } from "react-bootstrap";
 import "./ShowItems.css";
 import { FaTrash } from "react-icons/fa";
-import { ItemsContext } from "../../tech/contexts/ItemsContext";
+import { EventsContext } from "../../tech/contexts/EventsContext";
 
-const ShowItems = ({ items }) => {
-  const { deleteItem, changeItemState } = useContext(ItemsContext);
-  // console.log(items)
+const ShowItems = ({ items, event }) => {
+	const { deleteItem, changeItemState  } = useContext(EventsContext);
+	// console.log(items)
   return (
     <div className="show-items">
       <ListGroup>
@@ -20,12 +20,12 @@ const ShowItems = ({ items }) => {
                 <Form.Check
                   type="checkbox"
                   checked={item.state === "done"}
-                  onChange={() => changeItemState(item.id)}
+                  onChange={() => changeItemState(event.id, item.id)}
                   label={item.name}
                   className="item-text"
                 />
                 <FaTrash
-                  onClick={() => deleteItem(item.id)}
+                  onClick={() => deleteItem(event.id, item.id)}
                   className="icon-trash"
                 />
               </ListGroup.Item>

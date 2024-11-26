@@ -6,7 +6,6 @@ import EventDetail from "./main/EventDetail";
 
 import EventsProvider from "./tech/providers/EventsProvider";
 import UsersProvider from "./tech/providers/UsersProvider";
-import ItemsProvider from "./tech/providers/ItemsProvider";
 
 const App = () => {
   const divStyles = {
@@ -20,13 +19,11 @@ const App = () => {
       <BrowserRouter>
         <UsersProvider>
           <EventsProvider>
-            <ItemsProvider>
               <AppHeader />
               <Routes>
                 <Route index path="/" element={<Events />}></Route>
                 <Route path="/:id" element={<EventDetail />}></Route>
               </Routes>
-            </ItemsProvider>
           </EventsProvider>
         </UsersProvider>
       </BrowserRouter>
