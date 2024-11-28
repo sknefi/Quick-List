@@ -1,0 +1,93 @@
+### GET user
+GET http://localhost:3001/user/get?id=674469294202a3ec613ef37a
+
+### DELETE user
+DELETE http://localhost:3001/user/delete?id=67449d84006e58b6c1b07cec
+
+### UPDATE user
+PUT http://localhost:3001/user/update?id=6747100ec1c469d6fea8b9f4
+Content-Type: application/json
+
+{
+	"name": "New name",
+	"surname": "New awakedavakevra",
+	"photo": "New photo"
+}
+
+### LIST user
+GET http://localhost:3001/user/list
+
+### CREATE user
+POST http://localhost:3001/user/create
+Content-Type: application/json
+
+{
+	"name": "Kladestyn",
+	"surname": "Awakedavra",
+	"photo": "photo"
+}
+
+### LOGIN user
+POST http://localhost:3001/user/login
+Content-Type: application/json
+
+{
+	"name": "romulus",
+	"surname": "augustus",
+	"photo": "photo1"
+}
+
+#===================================================================================================#
+### Define the bearer token and access token
+@bearer = "Bearer"
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzIzNjYyLCJleHAiOjE3MzI3MjQ1NjJ9.Vu74Yb3_yPUCquGIzqE9yAg_VPw3T0b7PN1eA0jAXAg"
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
+
+### GET event
+GET http://localhost:3001/event/get?id=674469294202a3ec613ef37a
+Authorization: {{accessToken}}
+
+### DELETE event
+DELETE http://localhost:3001/event/delete?id=67449d84006e58b6c1b07cec
+Authorization: {{accessToken}}
+
+### UPDATE event
+PUT http://localhost:3001/event/update?id=6747100ec1c469d6fea8b9f4
+Authorization: {{accessToken}}
+Content-Type: application/json
+
+{
+	"name": "New name",
+	"surname": "New awakedavakevra",
+	"photo": "New photo"
+}
+
+### LIST event
+GET http://localhost:3001/event/list
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
+
+### CREATE event
+POST http://localhost:3001/event/create
+Authorization: {{accessToken}}
+Content-Type: application/json
+
+{
+	"name": "Pregnants",
+	"members": [
+		"674450c8e2f3f5cbcf033fff",
+		"674450c8e2f3f5cbcf033ccc"
+	],
+	"items": [
+		{
+			"name": "bread",
+			"state": "pending"
+		},
+		{
+			"name": "milk",
+			"state": "done"
+		}
+	],
+	"owner": "674450c8e2f3f5cbcf033aaa",
+	"archived": false,
+	"icon": "a"
+}

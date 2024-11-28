@@ -6,6 +6,9 @@ const listAbl = require("../abl/user_abl/listAbl.js");
 const deleteAbl = require("../abl/user_abl/deleteAbl.js");
 const createAbl = require('../abl/user_abl/createAbl.js');
 const updateAbl = require('../abl/user_abl/updateAbl.js');
+const loginAbl = require('../abl/user_abl/loginAbl.js');
+
+// const authenticateToken = require("../helpers/AuthenticateToken.js");
 
 // CRUD + LIST
 
@@ -32,6 +35,11 @@ router.delete("/delete", (req, res) => {
 // LIST USERS
 router.get("/list", (req, res) => {
 	listAbl(req, res);
+});
+
+// LOGIN USER - CREATE ACCESS TOKEN
+router.post("/login", (req, res) => {
+	loginAbl(req, res);
 });
 
 module.exports = router;
