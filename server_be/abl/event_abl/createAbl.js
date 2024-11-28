@@ -6,7 +6,7 @@ const itemSchema = {
   type: "object",
   properties: {
     name: { type: "string" },
-    state: { type: "string", enum: ["pending", "done"], required: true }, // Only allow "pending" or "done" states
+    state: { type: "string", enum: ["pending", "done"] }, // Only allow "pending" or "done" states
   },
   required: ["name", "state"],
   additionalProperties: false,
@@ -17,8 +17,7 @@ const schema = {
   properties: {
     name: { type: "string" },
     members: { type: "array", items: { type: "string" } },
-    // items: { type: "array", items: itemSchema }, // Validate each item in the 'items' array
-    items: { type: "array", items: { type: "object" } }, // Validate each item in the 'items' array
+    items: { type: "array", items: itemSchema }, // Validate each item in the 'items' array
     owner: { type: "string" },
     icon: { type: "string" },
     archived: { type: "boolean" },

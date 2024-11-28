@@ -43,12 +43,10 @@ Content-Type: application/json
 
 # EVENT ENDPOINTS
 ### Define the bearer token and access token
-@bearer = "Bearer"
-@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzIzNjYyLCJleHAiOjE3MzI3MjQ1NjJ9.Vu74Yb3_yPUCquGIzqE9yAg_VPw3T0b7PN1eA0jAXAg"
-@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
+@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzk0NTU0LCJleHAiOjE3MzI3OTU0NTR9.bRlKqiEaM8T7D9U-bjCL3NZH_PvbHE_WJvs9InCBYOY
 
 ### GET event
-GET http://localhost:3001/event/get?id=674469294202a3ec613ef37a
+GET http://localhost:3001/event/get?id=67471858cf965e445addf6b8
 Authorization: {{accessToken}}
 
 ### DELETE event
@@ -56,19 +54,36 @@ DELETE http://localhost:3001/event/delete?id=67449d84006e58b6c1b07cec
 Authorization: {{accessToken}}
 
 ### UPDATE event
-PUT http://localhost:3001/event/update?id=6747100ec1c469d6fea8b9f4
+PUT http://localhost:3001/event/update?id=6748594909d8d5183f95aae4
 Authorization: {{accessToken}}
 Content-Type: application/json
 
-{
-	"name": "New name",
-	"surname": "New awakedavakevra",
-	"photo": "New photo"
-}
+  {
+    "name": "Non-Pregnants",
+    "members": [
+      "674450c8e2f3f5cbcf033fff",
+      "674450c8e2f3f5cbcf033ccc"
+    ],
+    "items": [
+      {
+        "name": "toys",
+        "state": "done",
+        "_id": "6748594909d8d5183f95aae5"
+      },
+      {
+        "name": "milk",
+        "state": "pending",
+        "_id": "6748594909d8d5183f95aae6"
+      }
+    ],
+    "owner": "674450c8e2f3f5cbcf033aaa",
+    "archived": false,
+    "icon": "x"
+  }
 
 ### LIST event
 GET http://localhost:3001/event/list
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
+Authorization: {{accessToken}}
 
 ### CREATE event
 POST http://localhost:3001/event/create
@@ -76,7 +91,7 @@ Authorization: {{accessToken}}
 Content-Type: application/json
 
 {
-	"name": "Non Pregnants",
+	"name": "Pregnants",
 	"members": [
 		"674450c8e2f3f5cbcf033fff",
 		"674450c8e2f3f5cbcf033ccc"
@@ -93,5 +108,5 @@ Content-Type: application/json
 	],
 	"owner": "674450c8e2f3f5cbcf033aaa",
 	"archived": false,
-	"icon": "b"
+	"icon": "a"
 }

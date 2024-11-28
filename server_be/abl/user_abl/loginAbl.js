@@ -32,8 +32,6 @@ async function loginAbl(req, res) {
 
     // Send a success response with the success of adding the access token
     res.status(201).json({
-      code: "accessTokenAdded",
-      message: "Access token added successfully",
       accessToken,
 	  refreshToken,
     });
