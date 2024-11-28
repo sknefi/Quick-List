@@ -7,10 +7,10 @@ const profiles = {
       "addMembers",
       "archiveEvent",
       "showMembers",
-	  
-	  "updateEvent",
-	  "getEvent",
-	  "listEvents",
+
+      "updateEvent",
+      "getEvent",
+      "listEvents",
       "deleteEvent",
       "createEvent",
     ],
@@ -23,9 +23,9 @@ const profiles = {
       "leaveEvent",
 
       "createEvent",
-	  "updateEvent",
-	  "getEvent",
-	  "listEvents",
+      "updateEvent",
+      "getEvent",
+      "listEvents",
     ],
   },
   nonMember: {
@@ -33,29 +33,52 @@ const profiles = {
   },
 };
 
-function roleGuard(requiredRole) {
-  return (req, res, next) => {
-
-    // I need to implement JWT logic here, THEN I NEED TO DELETE THIS
-    if (!req.user || !req.user.role) {
-      return next();
-    }
-	//member
-    const userRole = req.user?.role;
-
-    // Check if user role matches the required role
-    if (
-      profiles[userRole] &&
-      profiles[userRole].canAccess.includes(requiredRole)
-    ) {
-      return next(); // Authorized, proceed to the endpoint
+function roleGuard(requiredPermission) {
+  return async (req, res, next) => {
+    const { user, eventId } = req.body; // Assume `req.eventId` is provided.
+    if (!user || !eventId) {
+      return res.status(403).json({
+        code: "accessDenied",
+        message: "Unable to determine user role.",
+      });
     }
 
-    // If not authorized
-    res.status(403).json({
-      code: "accessDenied",
-      message: "You do not have permission to perform this action.",
-    });
+    try {
+      const event = await EventModel.findById(eventId);
+
+      if (!event) {
+        return res.status(403).json({
+          code: "accessDenied",
+          message: "Event not found.",
+        });
+      }
+      let userRole = "nonMember";
+      if (event.ownerId === user.id) {
+        userRole = "owner";
+      } else if (event.members.includes(user.id)) {
+        userRole = "member";
+      }
+
+      // Check permissions
+      if (
+        profiles[userRole] &&
+        profiles[userRole].canAccess.includes(requiredPermission)
+      ) {
+        return next(); // Authorized
+      }
+
+      // If not authorized
+      res.status(403).json({
+        code: "accessDenied",
+        message: "You do not have permission to perform this action.",
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        code: "serverError",
+        message: "An error occurred while verifying permissions.",
+      });
+    }
   };
 }
 

@@ -30,7 +30,7 @@ const schema = {
 // http://localhost:3001/event/update?id=507f1f77bcf86cd799439011
 async function updateAbl(req, res) {
   try {
-    const eventId = req.query.id;  // event ID is passed in the URL as a parameter
+    const eventId = req.query.id;
     const reqParams = req.body;
 
     const valid = ajv.validate(schema, reqParams);
@@ -41,10 +41,9 @@ async function updateAbl(req, res) {
         validationError: ajv.errors,
       });
     }
-	
+
     // Find the event by its ID
     const event = await EventModel.findById(eventId);
-	console.log(event)
     if (!event) {
       return res.status(404).json({
         code: "eventNotFound",
@@ -64,11 +63,7 @@ async function updateAbl(req, res) {
     const updatedEvent = await event.save();
 
     // Send a success response with the updated event data
-    res.status(200).json({
-      code: "eventUpdated",
-      message: "Event updated successfully",
-      event: updatedEvent,
-    });
+    res.status(200).json(updatedEvent);
   } catch (error) {
     console.log(error.message);
     res.status(500).json({

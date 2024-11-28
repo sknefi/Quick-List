@@ -12,21 +12,19 @@ const { authenticateToken } = require("../helpers/AuthenticateToken.js");
 
 // CRUD + LIST
 
-// EVERYTHING works, eventCreate and eventDelete tests needed
-
 // CREATE EVENT
-router.post("/create", authenticateToken, roleGuard("createEvent"), createAbl);
+router.post("/create", authenticateToken, createAbl);
 
 // GET EVENT
-router.get("/get", authenticateToken, roleGuard("getEvent"), getAbl);
+router.get("/get", authenticateToken, getAbl);
 
 // UPDATE EVENT
-router.put("/update", authenticateToken, roleGuard("updateEvent"), updateAbl);
+router.put("/update", authenticateToken, updateAbl);
 
 // DELETE EVENT
-router.delete("/delete", authenticateToken, roleGuard("deleteEvent"), deleteAbl);
+router.delete("/delete", authenticateToken, deleteAbl);
 
 // LIST EVENTS
-router.get("/list", authenticateToken, roleGuard("listEvent"), listAbl);
+router.get("/list", authenticateToken, listAbl);
 
 module.exports = router;

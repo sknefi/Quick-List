@@ -1,3 +1,5 @@
+# USER ENDPOINTS
+
 ### GET user
 GET http://localhost:3001/user/get?id=674469294202a3ec613ef37a
 
@@ -38,10 +40,12 @@ Content-Type: application/json
 }
 
 #===================================================================================================#
+
+# EVENT ENDPOINTS
 ### Define the bearer token and access token
 @bearer = "Bearer"
 @token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzIzNjYyLCJleHAiOjE3MzI3MjQ1NjJ9.Vu74Yb3_yPUCquGIzqE9yAg_VPw3T0b7PN1eA0jAXAg"
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
+@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzQyODg2LCJleHAiOjE3MzI3NDM3ODZ9.bzIHcXHMv9K71is-ArQZAGG8yEkOk5X3d4XQT4Sa1DI
 
 ### GET event
 GET http://localhost:3001/event/get?id=674469294202a3ec613ef37a
@@ -72,7 +76,7 @@ Authorization: {{accessToken}}
 Content-Type: application/json
 
 {
-	"name": "Pregnants",
+	"name": "Non Pregnants",
 	"members": [
 		"674450c8e2f3f5cbcf033fff",
 		"674450c8e2f3f5cbcf033ccc"
@@ -89,5 +93,5 @@ Content-Type: application/json
 	],
 	"owner": "674450c8e2f3f5cbcf033aaa",
 	"archived": false,
-	"icon": "a"
+	"icon": "b"
 }

@@ -3,28 +3,28 @@ const ajv = new Ajv();
 const EventModel = require("../../models/EventModel.js");
 
 const itemSchema = {
-	type: "object",
-	properties: {
-	  name: { type: "string" },
-	  state: { type: "string", enum: ["pending", "done"], required: true }, // Only allow "pending" or "done" states
-	},
-	required: ["name", "state"],
-	additionalProperties: false,
-  };
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    state: { type: "string", enum: ["pending", "done"], required: true }, // Only allow "pending" or "done" states
+  },
+  required: ["name", "state"],
+  additionalProperties: false,
+};
 
 const schema = {
-	type: "object",
-	properties: {
-		name: { type: "string" },
-		members: { type: "array", items: { type: "string" } },
-		// items: { type: "array", items: itemSchema }, // Validate each item in the 'items' array
-		items: { type: "array", items: { type: "object" } }, // Validate each item in the 'items' array
-		owner: { type: "string" },
-		icon: { type: "string" },
-		archived: { type: "boolean" }
-	},
-	required: ["name", "members", "items", "owner", "icon"],
-	additionalProperties: false,
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    members: { type: "array", items: { type: "string" } },
+    // items: { type: "array", items: itemSchema }, // Validate each item in the 'items' array
+    items: { type: "array", items: { type: "object" } }, // Validate each item in the 'items' array
+    owner: { type: "string" },
+    icon: { type: "string" },
+    archived: { type: "boolean" },
+  },
+  required: ["name", "members", "items", "owner", "icon"],
+  additionalProperties: false,
 };
 
 // http://localhost:3001/event/create
@@ -49,16 +49,12 @@ async function createAbl(req, res) {
       icon: reqParams.icon,
       archived: reqParams.archived || false, // Default to false if not provided
     });
-	console.log(newEvent)
-	const savedEvent = await newEvent.save();
+    console.log(newEvent);
+    const savedEvent = await newEvent.save();
     // Send a success response with the created event data
-    res.status(201).json({
-      code: "eventCreated",
-      message: "Event created successfully",
-      event: savedEvent,
-    });
+    res.status(201).json(savedEvent);
   } catch (error) {
-	console.log(error.message);
+    console.log(error.message);
     res.status(500).json({
       code: "internalServerError",
       message: "An internal server error occurred",
