@@ -17,8 +17,8 @@ const schema = {
   properties: {
     name: { type: "string" },
     members: { type: "array", items: { type: "string" } },
-    // items: { type: "array", items: itemSchema },
-    items: { type: "array", items: { type: "object" } },
+    items: { type: "array", items: itemSchema },
+    // items: { type: "array", items: { type: "object" } },
     owner: { type: "string" },
     icon: { type: "string" },
     archived: { type: "boolean" },
@@ -65,7 +65,7 @@ async function updateAbl(req, res) {
     // Send a success response with the updated event data
     res.status(200).json(updatedEvent);
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     res.status(500).json({
       code: "internalServerError",
       message: "An internal server error occurred",

@@ -35,7 +35,7 @@ async function getAbl(req, res) {
       return;
     }
 
-    res.json(event);
+    res.status(200).json(event);
   } catch (error) {
     res.status(500).json({
       code: "internalServerError",

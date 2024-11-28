@@ -48,9 +48,8 @@ async function createAbl(req, res) {
       icon: reqParams.icon,
       archived: reqParams.archived || false, // Default to false if not provided
     });
-    console.log(newEvent);
     const savedEvent = await newEvent.save();
-    // Send a success response with the created event data
+	
     res.status(201).json(savedEvent);
   } catch (error) {
     console.log(error.message);

@@ -13,7 +13,7 @@ async function listAbl(req, res) {
     //   });
     // }
 
-    res.json(events);
+    res.status(200).json(events);
   } catch (error) {
     // Handle errors
     res.status(500).json({

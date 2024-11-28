@@ -37,7 +37,7 @@ async function deleteAbl(req, res) {
 
     }
 
-    res.json(event);
+    res.status(200).json(event);
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({
