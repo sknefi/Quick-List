@@ -27,7 +27,7 @@ async function loginAbl(req, res) {
       });
     }
 
-	const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+	const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '45m' });
 	const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
     // Send a success response with the success of adding the access token

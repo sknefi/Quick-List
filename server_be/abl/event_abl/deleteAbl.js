@@ -15,7 +15,12 @@ const schema = {
 async function deleteAbl(req, res) {
   try {
     const reqParams = req.query?.id ? req.query : req.body;
-
+	if (!reqParams) {
+		return res.status(400).json({
+			code: "dtoInIsNotValid",
+			message: "dto in is not valid",
+		});
+	}
     const valid = ajv.validate(schema, reqParams);
     if (!valid) {
       res.status(400).json({

@@ -1,7 +1,7 @@
 # USER ENDPOINTS
 
 ### GET user
-GET http://localhost:3001/user/get?id=674469294202a3ec613ef37a
+GET http://localhost:3001/user/get?id=67471858cf965e445addf6b8
 
 ### DELETE user
 DELETE http://localhost:3001/user/delete?id=67449d84006e58b6c1b07cec
@@ -43,14 +43,14 @@ Content-Type: application/json
 
 # EVENT ENDPOINTS
 ### Define the bearer token and access token
-@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzMyNzk0NTU0LCJleHAiOjE3MzI3OTU0NTR9.bRlKqiEaM8T7D9U-bjCL3NZH_PvbHE_WJvs9InCBYOY
+@accessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9tdWx1cyIsInN1cm5hbWUiOiJhdWd1c3R1cyIsInBob3RvIjoicGhvdG8xIiwiaWF0IjoxNzM0MTc1MDQ5LCJleHAiOjE3MzQxNzU5NDl9.HBhlw8yRswW0adR3vC7aQnJUe4fkmrr-6HHM4y1EnuQ
 
 ### GET event
 GET http://localhost:3001/event/get?id=67471858cf965e445addf6b8
 Authorization: {{accessToken}}
 
 ### DELETE event
-DELETE http://localhost:3001/event/delete?id=67449d84006e58b6c1b07cec
+DELETE http://localhost:3001/event/delete?id=67483a4850dba461d19f33af
 Authorization: {{accessToken}}
 
 ### UPDATE event
@@ -67,13 +67,11 @@ Content-Type: application/json
     "items": [
       {
         "name": "toys",
-        "state": "done",
-        "_id": "6748594909d8d5183f95aae5"
+        "state": "done"
       },
       {
         "name": "milk",
-        "state": "pending",
-        "_id": "6748594909d8d5183f95aae6"
+        "state": "pending"
       }
     ],
     "owner": "674450c8e2f3f5cbcf033aaa",
