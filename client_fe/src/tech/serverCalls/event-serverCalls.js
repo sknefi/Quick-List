@@ -4,7 +4,7 @@ export async function createEventSC(event) {
 	const state = "pending";
 	const error = null
 	const urlCall = `${serverInfo.eventUrl}/create`;
-	const { id, ...eventTotSend } = event;
+	const { _id, ...eventTotSend } = event;
 	try {
 		const response = await fetch(urlCall, {
 			method: "POST",
@@ -53,7 +53,6 @@ export async function updateEventSC(event) {
     // Create a new event object without _id, _v and cleaned items
     const { _id, __v, ...eventWithoutIdAndV } = event; // Exclude _id and _v
     eventWithoutIdAndV.items = event.items.map(({ _id, __v, ...itemWithoutIdAndV }) => itemWithoutIdAndV); // Clean items array
-	console.log(eventWithoutIdAndV)
     try {
         const response = await fetch(urlCall, {
             method: "PUT",
@@ -84,7 +83,6 @@ export async function getEventsSC() {
 			authorization: `Bearer ${localStorage.getItem("token")}`,
 		});
 		const responseJson = await response.json();
-		// console.log(responseJson);
 		if (response.status < 400)
 			return ({ state: "success", events: responseJson, error });
 		else 

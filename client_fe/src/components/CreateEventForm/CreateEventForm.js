@@ -24,7 +24,7 @@ function CreateEventForm({ handleClose }) {
       items: [],
       archived: false,
       icon: icon,
-      id: tempId,
+      _id: tempId,
     };
   };
 

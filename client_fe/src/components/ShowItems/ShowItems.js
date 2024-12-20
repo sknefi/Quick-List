@@ -5,8 +5,8 @@ import { FaTrash } from "react-icons/fa";
 import { EventsContext } from "../../tech/contexts/EventsContext";
 
 const ShowItems = ({ items, event }) => {
-	const { deleteItem, changeItemState  } = useContext(EventsContext);
-	// console.log(items)
+  const { deleteItem, changeItemState } = useContext(EventsContext);
+  // console.log(items)
   return (
     <div className="show-items">
       <ListGroup>
@@ -20,12 +20,12 @@ const ShowItems = ({ items, event }) => {
                 <Form.Check
                   type="checkbox"
                   checked={item.state === "done"}
-                  onChange={() => changeItemState(event.id, item.id)}
+                  onChange={() => changeItemState(event._id, item._id)}
                   label={item.name}
                   className="item-text"
                 />
                 <FaTrash
-                  onClick={() => deleteItem(event.id, item.id)}
+                  onClick={() => deleteItem(event._id, item._id)}
                   className="icon-trash"
                 />
               </ListGroup.Item>

@@ -12,7 +12,7 @@ function AddItemForm({ eventId, handleClose }) {
     e.preventDefault();
     const tempId = Math.random().toString(36) + Date.now().toString(36);
     const newItem = {
-      id: tempId,
+      _id: tempId,
       name: newItemName,
       state: "pending",
     };

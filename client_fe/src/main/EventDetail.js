@@ -57,7 +57,7 @@ const EventDetail = () => {
       <AddItemModal
         show={showAddItemModal}
         handleClose={() => setShowAddItemModal(false)}
-        eventId={event.id}
+        eventId={event._id}
       />
     </div>
   );

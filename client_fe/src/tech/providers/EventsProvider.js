@@ -45,10 +45,10 @@ const EventsProvider = ({ children }) => {
 
   // pridá event k ostatným eventom
   async function handleAddEvent(event) {
-	const res = await createEventSC(event);
-	if (res.state !== "success") return;
-	setAllEvents(() => {
-      const newEvents = [...allEvents, event];
+    const res = await createEventSC(event);
+    if (res.state !== "success") return;
+    setAllEvents(() => {
+      const newEvents = [...allEvents, res.event];
 
       // ak je zapnutá ikonka oko - show archived
       if (statusArchived) {
@@ -99,20 +99,19 @@ const EventsProvider = ({ children }) => {
     });
   }
 
-  // pridá id itemu do event.items
-  function handleAddItemToEvent(eventId, itemId) {
+  async function handleAddItemToEvent(eventId, item) {
+    const event = getEvent(eventId);
+    const updatedEvent = { ...event, items: [...event.items, item] };
+    const res = await updateEventSC(updatedEvent);
+
+    if (res.state !== "success") return;
     setAllEvents((currentEvents) => {
-      const newEvents = currentEvents.map((event) => {
-        if (event.id === eventId) {
-          return { ...event, items: [...event.items, itemId] };
-        }
-        return event;
-      });
+      const newEvents = currentEvents.map((evt) =>
+        evt._id === eventId ? res.event : evt
+      );
 
       setEvents(
-        statusArchived
-          ? newEvents
-          : newEvents.filter((event) => !event.archived)
+        statusArchived ? newEvents : newEvents.filter((evt) => !evt.archived)
       );
 
       return newEvents;
@@ -173,13 +172,19 @@ const EventsProvider = ({ children }) => {
   }
 
   // vymaže item z eventu
-  function deleteItem(eventId, itemId) {
+  async function deleteItem(eventId, itemId) {
+    const event = getEvent(eventId);
+    const res = await updateEventSC({
+      ...event,
+      items: event.items.filter((item) => item._id !== itemId),
+    });
+    if (res.state !== "success") return;
     setAllEvents((currentEvents) => {
       const newEvents = currentEvents.map((event) => {
-        if (event.id === eventId) {
+        if (event._id === eventId) {
           return {
             ...event,
-            items: event.items.filter((item) => item.id !== itemId),
+            items: event.items.filter((item) => item._id !== itemId),
           };
         }
         return event;
@@ -196,14 +201,25 @@ const EventsProvider = ({ children }) => {
   }
 
   // odškrtne políčko a nastaví stav
-  function changeItemState(eventId, itemId) {
+  async function changeItemState(eventId, itemId) {
+    const event = getEvent(eventId);
+    const res = await updateEventSC({
+      ...event,
+      items: event.items.map((item) =>
+        item._id === itemId
+          ? { ...item, state: item.state === "pending" ? "done" : "pending" }
+          : item
+      ),
+    });
+    // console.log(res)
+    if (res.state !== "success") return;
     setAllEvents((currentEvents) => {
       const newEvents = currentEvents.map((event) => {
-        if (event.id === eventId) {
+        if (event._id === eventId) {
           return {
             ...event,
             items: event.items.map((item) =>
-              item.id === itemId
+              item._id === itemId
                 ? {
                     ...item,
                     state: item.state === "pending" ? "done" : "pending",
