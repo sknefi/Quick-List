@@ -2,8 +2,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useContext, useState } from "react";
 import { EventsContext } from "../../tech/contexts/EventsContext";
+import { TranslationContext } from "../../tech/contexts/TranslationContext";
 
 function AddItemForm({ eventId, handleClose }) {
+	const {t} = useContext(TranslationContext);
   const { handleAddItemToEvent } = useContext(EventsContext);
 
   const [newItemName, setNewItemName] = useState("");
@@ -23,10 +25,10 @@ function AddItemForm({ eventId, handleClose }) {
   return (
     <Form onSubmit={handleSubmit} className="create-list-form">
       <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name of item</Form.Label>
+        <Form.Label>{t.modalAddItemName	}</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Item name"
+          placeholder={t.modalAddItemNamePlaceholder}
           onChange={(e) => setNewItemName(e.target.value)}
         />
       </Form.Group>
@@ -36,7 +38,7 @@ function AddItemForm({ eventId, handleClose }) {
         type="submit"
         className="button-create-list-form"
       >
-        Submit
+        {t.submit}
       </Button>
     </Form>
   );

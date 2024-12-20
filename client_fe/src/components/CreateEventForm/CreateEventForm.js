@@ -4,8 +4,10 @@ import "./CreateEventForm.css";
 import { useContext, useState } from "react";
 import { UsersContext } from "../../tech/contexts/UsersContext";
 import { EventsContext } from "../../tech/contexts/EventsContext";
+import { TranslationContext } from "../../tech/contexts/TranslationContext";
 
 function CreateEventForm({ handleClose }) {
+	const { t } = useContext(TranslationContext);
   const { handleAddEvent } = useContext(EventsContext);
 
   const [newEventName, setNewEventName] = useState("");
@@ -40,18 +42,18 @@ function CreateEventForm({ handleClose }) {
   return (
     <Form onSubmit={handleSubmit} className="create-list-form">
       <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name yours new list</Form.Label>
+        <Form.Label>{t.modalCreateName}</Form.Label>
         <Form.Control
           type="text"
-          placeholder="List name"
+          placeholder={t.modalChangeTitle}
           onBlur={(e) => setNewEventName(e.target.value)}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicIcon">
-        <Form.Label>Icon for yours new list</Form.Label>
+        <Form.Label>{t.modalCreateIcon}</Form.Label>
         <Form.Control
           type="icon"
-          placeholder="Icon"
+          placeholder={t.icon}
           onBlur={(e) => setNewEventIcon(e.target.value)}
         />
       </Form.Group>
@@ -61,7 +63,7 @@ function CreateEventForm({ handleClose }) {
         type="submit"
         className="button-create-list-form"
       >
-        Submit
+        {t.submit}
       </Button>
     </Form>
   );

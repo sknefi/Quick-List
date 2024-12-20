@@ -1,0 +1,38 @@
+{
+	"create": "Vytvoriť",
+	"close": "Zavrieť",
+	"submit": "Potvrdiť",
+	"leave": "Opustiť",
+	"icon": "Ikona",
+
+	"modalArchiveTitle": "Archivovať list",
+	"modalArchiveText": "Naozaj chcete archivovať tento list?",
+	"archive": "Archivovať",
+
+	"modalDeleteTitle": "Vymazať list",
+	"modalDeleteText": "Naozaj chcete vymazať tento list?",
+	"delete": "Vymazať",
+
+	"modalCreateTitle": "Vytvoriť nový list",
+	"modalCreateName": "Názov nového listu",
+	"modalCreateIcon": "Ikona nového listu",
+
+	"modalAddItemTitle": "Pridať položku",
+	"modalAddItemName": "Názov novej položky",
+	"modalAddItemNamePlaceholder": "Názov položky",
+
+	"changeNameOfList": "Zmeniť názov listu ",
+	"changeIconOfList": "Zmeniť ikonu listu",
+	"modalChangeTitle": "Názov listu",
+	"modalChangeIcon": "Ikona listu",
+
+	"addMembers": "Pridať členov",
+	"modalAddNewMembers": "Pridať nových členov do listu",
+
+	"showMembers": "Zobraziť členov",
+	"modalShowMembers": "Členovia listu",
+
+	"leaveList": "Opustiť list",
+	"modalLeaveListTitle": "Opustiť list",
+	"modalLeaveListText": "Naozaj chcete opustiť tento list?"
+}

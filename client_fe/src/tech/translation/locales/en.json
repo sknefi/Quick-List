@@ -1,0 +1,38 @@
+{
+	"create": "Create",
+	"close": "Close",
+	"submit": "Submit",
+	"leave": "Leave",
+	"icon": "Icon",
+
+	"modalArchiveTitle": "Archive list",
+	"modalArchiveText": "Do you really want to archive this list?",
+	"archive": "Archive",
+
+	"modalDeleteTitle": "Delete list",
+	"modalDeleteText": "Do you really want to delete this list?",
+	"delete": "Delete",
+
+	"modalCreateTitle": "Create a new list",
+	"modalCreateName": "Name of the new list",
+	"modalCreateIcon": "Icon of the new list",
+
+	"modalAddItemTitle": "Add item",
+	"modalAddItemName": "Name of the new item",
+	"modalAddItemNamePlaceholder": "Item name",
+
+	"changeNameOfList": "Change the name of the list",
+	"changeIconOfList": "Change the icon of the list",
+	"modalChangeTitle": "List name",
+	"modalChangeIcon": "List icon",
+
+	"addMembers": "Add members",
+	"modalAddNewMembers": "Add new members to the list",
+
+	"showMembers": "Show members",
+	"modalShowMembers": "List members",
+
+	"leaveList": "Leave list",
+	"modalLeaveListTitle": "Leave list",
+	"modalLeaveListText": "Do you really want to leave this list?"
+}

@@ -12,8 +12,10 @@ import EventMembersModal from "../EventMembersModal/EventMembersModal";
 import AddMembersModal from "../AddMembersModal/AddMembersModal";
 import ChangeEventNameModal from "../ChangeEventNameModal/ChangeEventNameModal";
 import LeaveEventModal from "../LeaveEventModal/LeaveEventModal";
+import { TranslationContext } from "../../tech/contexts/TranslationContext";
 
 function ShowOptions({ event }) {
+	const {t} = useContext(TranslationContext);
   const navigate = useNavigate();
   const { loggedInUser } = useContext(UsersContext);
 
@@ -40,7 +42,7 @@ function ShowOptions({ event }) {
             className="settings-text"
             onClick={() => setShowBtnChangeEventName(true)}
           >
-            Change name of list
+            {t.changeNameOfList	}
           </Dropdown.Item>
         )}
         {event.owner === loggedInUser._id && (
@@ -48,21 +50,21 @@ function ShowOptions({ event }) {
             className="settings-text"
             onClick={() => setShowBtnAddMembers(true)}
           >
-            Add members
+            {t.addMembers}
           </Dropdown.Item>
         )}
         <Dropdown.Item
           className="settings-text"
           onClick={() => setShowBtnMembers(true)}
         >
-          Show members
+          {t.showMembers}
         </Dropdown.Item>
         {event.owner !== loggedInUser._id && (
           <Dropdown.Item
             className="settings-text"
             onClick={() => setShowBtnLeaveEvent(true)}
           >
-            Leave list
+            {t.leaveList}
           </Dropdown.Item>
         )}
         {loggedInUser._id === event.owner && (

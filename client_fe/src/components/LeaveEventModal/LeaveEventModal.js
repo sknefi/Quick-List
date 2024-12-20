@@ -4,8 +4,10 @@ import { EventsContext } from "../../tech/contexts/EventsContext";
 import { useContext } from "react";
 import { UsersContext } from "../../tech/contexts/UsersContext";
 import { useNavigate } from "react-router-dom";
+import { TranslationContext } from "../../tech/contexts/TranslationContext";
 
 function LeaveEventModal({ show, handleClose, event }) {
+  const { t } = useContext(TranslationContext);
   const navigate = useNavigate();
   const { handleLeaveList } = useContext(EventsContext);
   const { loggedInUser } = useContext(UsersContext);
@@ -21,16 +23,16 @@ function LeaveEventModal({ show, handleClose, event }) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            Leave list <b>{event.name}</b>
+            {t.modalLeaveListTitle	} <b>{event.name}</b>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>Do you really want to leave this list?</Modal.Body>
+        <Modal.Body>{t.modalLeaveListText	}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t.close}
           </Button>
           <Button variant="warning" onClick={handleClick}>
-            Leave
+            {t.leave}
           </Button>
         </Modal.Footer>
       </Modal>

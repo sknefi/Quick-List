@@ -1,11 +1,14 @@
 import Modal from "react-bootstrap/Modal";
 import AddItemForm from "../AddItemForm/AddItemForm";
+import { useContext } from "react";
+import { TranslationContext } from "../../tech/contexts/TranslationContext";
 
 function AddItemModal({ show, handleClose, eventId }) {
+	const {t} = useContext(TranslationContext)
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add new item</Modal.Title>
+        <Modal.Title>{t.modalAddItemTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <AddItemForm handleClose={handleClose} eventId={eventId} />

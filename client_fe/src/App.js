@@ -6,6 +6,7 @@ import EventDetail from "./main/EventDetail";
 
 import EventsProvider from "./tech/providers/EventsProvider";
 import UsersProvider from "./tech/providers/UsersProvider";
+import TranslationProvider from "./tech/providers/TranslationProvider";
 
 const App = () => {
   const divStyles = {
@@ -17,15 +18,17 @@ const App = () => {
     <div style={divStyles}>
       {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
       <BrowserRouter>
-        <UsersProvider>
-          <EventsProvider>
+        <TranslationProvider>
+          <UsersProvider>
+            <EventsProvider>
               <AppHeader />
               <Routes>
                 <Route index path="/" element={<Events />}></Route>
                 <Route path="/:id" element={<EventDetail />}></Route>
               </Routes>
-          </EventsProvider>
-        </UsersProvider>
+            </EventsProvider>
+          </UsersProvider>
+        </TranslationProvider>
       </BrowserRouter>
     </div>
   );

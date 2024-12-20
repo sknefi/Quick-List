@@ -5,11 +5,12 @@ import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
 import { EventsContext } from "../tech/contexts/EventsContext";
 import CreateEventModal from "../components/CreateEventModal/CreateEventModal";
-import Button from 'react-bootstrap/Button';
-
+import Button from "react-bootstrap/Button";
+import { TranslationContext } from "../tech/contexts/TranslationContext";
 
 const AppTools = () => {
-  const { displayArchived, statusArchivedMap } = useContext(EventsContext);
+	const { t } = useContext(TranslationContext);
+	const { displayArchived, statusArchivedMap } = useContext(EventsContext);
 
   // po stlačení ikonky oko - zobraz iba archivované
   function handleClickArchived() {
@@ -27,7 +28,9 @@ const AppTools = () => {
       {!statusArchivedMap.statusArchived && (
         <IoMdEyeOff className="icon-eye" onClick={handleClickArchived} />
       )}
-      <Button variant="primary" onClick={() => setShowCreateEventModal(true)}>CREATE</Button>
+      <Button variant="primary" onClick={() => setShowCreateEventModal(true)}>
+        {t.create}
+      </Button>
       <CreateEventModal
         show={showCreateEventModal}
         handleClose={() => setShowCreateEventModal(false)}
