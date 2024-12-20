@@ -13,18 +13,19 @@ const { authenticateToken } = require("../helpers/AuthenticateToken.js");
 // CRUD + LIST
 
 // CREATE EVENT
-router.post("/create", authenticateToken, createAbl);
+router.post("/create", createAbl);
 
 // GET EVENT
-router.get("/get", authenticateToken, getAbl);
+router.get("/get", getAbl);
 
 // UPDATE EVENT
-router.put("/update", authenticateToken, updateAbl);
+router.put("/update", updateAbl);
 
 // DELETE EVENT
-router.delete("/delete", authenticateToken, deleteAbl);
+router.delete("/delete", deleteAbl);
 
 // LIST EVENTS
-router.get("/list", authenticateToken, listAbl);
+// router.get("/list", authenticateToken, listAbl);
+router.get("/list", listAbl);
 
 module.exports = router;

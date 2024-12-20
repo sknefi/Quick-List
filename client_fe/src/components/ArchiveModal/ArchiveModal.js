@@ -24,7 +24,7 @@ function ArchiveModal({ show, handleClose, event }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={ () => handleArchiveButton(event.id)}>
+          <Button variant="primary" onClick={ () => handleArchiveButton(event._id)}>
             Archive
           </Button>
         </Modal.Footer>

@@ -10,7 +10,6 @@ function DeleteModal({ show, handleClose, event }) {
     handleDeleteEvent(eventId);
     handleClose();
   }
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -24,7 +23,7 @@ function DeleteModal({ show, handleClose, event }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={() => handleDeleteButton(event.id)}>
+          <Button variant="danger" onClick={() => handleDeleteButton(event._id)}>
             Delete
           </Button>
         </Modal.Footer>

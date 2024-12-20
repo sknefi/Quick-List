@@ -1,195 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { EventsContext } from "../contexts/EventsContext";
 import { UsersContext } from "../contexts/UsersContext";
+import {
+  getEventsSC,
+  updateEventSC,
+  deleteEventSC,
+  createEventSC,
+} from "../serverCalls/event-serverCalls";
 
 const EventsProvider = ({ children }) => {
   const { users } = useContext(UsersContext);
 
   // fetch na EventsList
-  const [allEvents, setAllEvents] = useState([
-    {
-      id: "81f0ba2765c2fd8e89d604c0fb7be123",
-      name: "Fruits",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "c13b6c6e17b749735950c09e41bd8449",
-      ],
-      items: [
-        {
-          id: "it1",
-          name: "Banan",
-          state: "done",
-        },
-        {
-          id: "it2",
-          name: "Horalka",
-          state: "pending",
-        },
-        {
-          id: "it3",
-          name: "Klobasa",
-          state: "pending",
-        },
-      ],
-      owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-      archived: false,
-      icon: "🍩",
-    },
-    {
-      id: "141eea2765c2fd8e89d604c0fb7b0919",
-      name: "Pets",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "lnxzklcnqiwj319ioafksnlzans",
-      ],
-      owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-      archived: true,
-      items: [
-        {
-          id: "it4",
-          name: "Stena",
-          state: "pending",
-        },
-        {
-          id: "it5",
-          name: "Obliecka",
-          state: "done",
-        },
-      ],
-      icon: "🐻",
-    },
-    {
-      id: "edc1b6c6e17b749735950c09e41bdaaeb",
-      name: "Groceries",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "8b2b893648d34fcc16a46abaf5ed3639",
-        "c13b6c6e17b749735950c09e41bd8449",
-        "paisjdkn1o23j1jaspokn",
-      ],
-      items: [
-        {
-          id: "it6",
-          name: "Stol",
-          state: "pending",
-        },
-        {
-          id: "it7",
-          name: "Vankus",
-          state: "pending",
-        },
-        {
-          id: "it8",
-          name: "Postel",
-          state: "pending",
-        },
-      ],
-      owner: "8b2b893648d34fcc16a46abaf5ed3639",
-      archived: true,
-      icon: "🏙️",
-    },
-    {
-      id: "ce01b6c6e17b749735950c09e41bde012",
-      name: "Random",
-      members: ["8b2b893648d34fcc16a46abaf5ed3639"],
-      owner: "8b2b893648d34fcc16a46abaf5ed3639",
-      icon: "◎",
-      items: [
-        {
-          id: "it9",
-          name: "Madrac",
-          state: "pending",
-        },
-      ],
-      archived: false,
-    },
-    {
-      id: "80f0ba2765c2fd8e89d604c0fb7beasdq",
-      name: "Vegetables",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "lnxzklcnqiwj319ioafksnlzans",
-        "paisjdkn1o23j1jaspokn",
-        "8b2b893648d34fcc16a46abaf5ed3639",
-      ],
-      items: [
-        {
-          id: "it10",
-          name: "papier",
-          state: "pending",
-        },
-        {
-          id: "it11",
-          name: "postel",
-          state: "done",
-        },
-        {
-          id: "it12",
-          name: "mikina",
-          state: "pending",
-        },
-      ],
-      owner: "paisjdkn1o23j1jaspokn",
-      archived: false,
-      icon: "💲",
-    },
-    {
-      id: "81f0ba2765c2fd8e89d604c0fb7asdjqbe123po",
-      name: "Washing",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "c13b6c6e17b749735950c09e41bd8449",
-        "lnxzklcnqiwj319ioafksnlzans",
-        "8b2b893648d34fcc16a46abaf5ed3639",
-      ],
-      items: [
-        {
-          id: "it13",
-          name: "plast",
-          state: "done",
-        },
-        {
-          id: "it14",
-          name: "vankus",
-          state: "pending",
-        },
-      ],
-      owner: "lnxzklcnqiwj319ioafksnlzans",
-      archived: true,
-      icon: "🥁",
-    },
-    {
-      id: "811231f0ba2765c2fd8e89d604c0fb7be1zxckl23",
-      name: "Bakery",
-      members: [
-        "04f0ba2765c2fd8e89d604c0fb7f6bae",
-        "c13b6c6e17b749735950c09e41bd8449",
-        "lnxzklcnqiwj319ioafksnlzans",
-        "paisjdkn1o23j1jaspokn",
-      ],
-      items: [
-        {
-          id: "it15",
-          name: "okno",
-          state: "done",
-        },
-        {
-          id: "it16",
-          name: "letak",
-          state: "done",
-        },
-        {
-          id: "it17",
-          name: "flasa",
-          state: "pending",
-        },
-      ],
-      owner: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-      archived: true,
-      icon: "⛹🏿",
-    },
-  ]);
+  const [allEvents, setAllEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const eventsData = await getEventsSC();
+      if (eventsData.state === "success") {
+        setAllEvents(eventsData.events);
+        setEvents(eventsData.events);
+      } else {
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   // nastavuje status archivovaniu eventov (sú/nie sú archivované)
   const [statusArchived, setStatusArchived] = useState(true);
@@ -207,8 +44,10 @@ const EventsProvider = ({ children }) => {
   }
 
   // pridá event k ostatným eventom
-  function handleAddEvent(event) {
-    setAllEvents(() => {
+  async function handleAddEvent(event) {
+	const res = await createEventSC(event);
+	if (res.state !== "success") return;
+	setAllEvents(() => {
       const newEvents = [...allEvents, event];
 
       // ak je zapnutá ikonka oko - show archived
@@ -224,10 +63,13 @@ const EventsProvider = ({ children }) => {
   }
 
   // zarchivuje event
-  function handleArchiveEvent(eventId) {
+  async function handleArchiveEvent(eventId) {
+    const event = getEvent(eventId);
+    const res = await updateEventSC({ ...event, archived: true });
+    if (res.state !== "success") return;
     setAllEvents(() => {
       const newEvents = allEvents.map((event) =>
-        event.id === eventId ? { ...event, archived: true } : event
+        event._id === eventId ? { ...event, archived: true } : event
       );
 
       // ak je zapnutá ikonka oko - show archived
@@ -241,9 +83,11 @@ const EventsProvider = ({ children }) => {
   }
 
   // vymaže event
-  function handleDeleteEvent(eventId) {
+  async function handleDeleteEvent(eventId) {
+    const res = await deleteEventSC(eventId);
+    if (res.state !== "success") return;
     setAllEvents(() => {
-      const newEvents = allEvents.filter((event) => event.id !== eventId);
+      const newEvents = allEvents.filter((event) => event._id !== eventId);
 
       // ak je zapnutá ikonka oko - show archived
       if (statusArchived) {
@@ -353,56 +197,61 @@ const EventsProvider = ({ children }) => {
 
   // odškrtne políčko a nastaví stav
   function changeItemState(eventId, itemId) {
-	setAllEvents((currentEvents) => {
-	  const newEvents = currentEvents.map((event) => {
-		if (event.id === eventId) {
-		  return {
-			...event,
-			items: event.items.map((item) =>
-			  item.id === itemId
-				? { ...item, state: item.state === "pending" ? "done" : "pending" }
-				: item
-			),
-		  };
-		}
-		return event;
-	  });
+    setAllEvents((currentEvents) => {
+      const newEvents = currentEvents.map((event) => {
+        if (event.id === eventId) {
+          return {
+            ...event,
+            items: event.items.map((item) =>
+              item.id === itemId
+                ? {
+                    ...item,
+                    state: item.state === "pending" ? "done" : "pending",
+                  }
+                : item
+            ),
+          };
+        }
+        return event;
+      });
 
-	  setEvents(
-		statusArchived
-		  ? newEvents
-		  : newEvents.filter((event) => !event.archived)
-	  );
+      setEvents(
+        statusArchived
+          ? newEvents
+          : newEvents.filter((event) => !event.archived)
+      );
 
-	  return newEvents;
-	});
+      return newEvents;
+    });
   }
 
   // vráti event podľa id (eventDetaily)
   function getEvent(eventId) {
-	return allEvents.find((event) => event.id === eventId);
+    return allEvents.find((event) => event._id === eventId);
   }
 
+  // pridá item do event.items
   function handleAddItemToItems(eventId, newItem) {
-	setAllEvents((currentEvents) => {
-	  const newEvents = currentEvents.map((event) => {
-		if (event.id === eventId) {
-		  return { ...event, items: [...event.items, newItem] };
-		}
-		return event;
-	  });
+    setAllEvents((currentEvents) => {
+      const newEvents = currentEvents.map((event) => {
+        if (event.id === eventId) {
+          return { ...event, items: [...event.items, newItem] };
+        }
+        return event;
+      });
 
-	  setEvents(
-		statusArchived
-		  ? newEvents
-		  : newEvents.filter((event) => !event.archived)
-	  );
+      setEvents(
+        statusArchived
+          ? newEvents
+          : newEvents.filter((event) => !event.archived)
+      );
 
-	  return newEvents;
-	});
+      return newEvents;
+    });
   }
 
   const handlerMap = {
+    allEvents,
     events: events,
     displayArchived: displayArchived,
     statusArchivedMap: {
@@ -420,8 +269,8 @@ const EventsProvider = ({ children }) => {
     handleLeaveList: handleLeaveList,
     deleteItem: deleteItem,
     changeItemState: changeItemState,
-	getEvent: getEvent,
-	handleAddItemToItems: handleAddItemToItems,
+    getEvent: getEvent,
+    handleAddItemToItems: handleAddItemToItems,
   };
 
   return (

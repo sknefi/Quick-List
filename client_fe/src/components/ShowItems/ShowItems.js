@@ -16,7 +16,7 @@ const ShowItems = ({ items, event }) => {
             // pri zmazaní itemu (deleteItem) pri filtrácii (.filter) prepíše vymazaná
             // hodnata na undefinied
             item && (
-              <ListGroup.Item key={item.id} className="item-div">
+              <ListGroup.Item key={item._id} className="item-div">
                 <Form.Check
                   type="checkbox"
                   checked={item.state === "done"}

@@ -10,7 +10,7 @@ const EventCard = ({ event, loggedInUser }) => {
   const navigate = useNavigate();
 
   function handleNavigate() {
-    navigate(`/${event.id}`);
+    navigate(`/${event._id}`);
   }
 
   // handle deleteButton

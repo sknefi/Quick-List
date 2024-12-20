@@ -8,11 +8,11 @@ const UsersProvider = ({ children }) => {
       name: "Filip",
       surname: "admin",
       email: "admin@admin.admin",
-      id: "04f0ba2765c2fd8e89d604c0fb7f6bae",
+      id: "674467bece726a70feda359c",
       photo: "",
     },
     {
-      id: "8b2b893648d34fcc16a46abaf5ed3639",
+      id: "674450c8e2f3f5cbcf033fff",
       name: "David",
       surname: "Brown",
       email: "david@example.com",
@@ -35,11 +35,11 @@ const UsersProvider = ({ children }) => {
   ]);
 
   const [loggedInUser, setLoggedInUser] = useState({
-    name: "admin",
-    surname: "adminovic",
-    email: "admin@admin.admin",
-    id: "04f0ba2765c2fd8e89d604c0fb7f6bae",
-    photo: "",
+	name: "Filip",
+	surname: "admin",
+	email: "admin@admin.admin",
+	id: "674467bece726a70feda359c",
+	photo: "",
   });
 
   function handleChangeLoggedInUser(userId) {
