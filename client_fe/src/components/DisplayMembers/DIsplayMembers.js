@@ -16,6 +16,7 @@ function DisplayMembers({ eventMembers, eventOwner, eventId }) {
             {user.name}
             {loggedInUser._id === eventOwner && loggedInUser._id !== user._id && (
               <FaTrash
+			  style={{ cursor: "pointer" }}
                 onClick={() => handleRemoveUserFromEvent(user._id, eventId)}
               />
             )}

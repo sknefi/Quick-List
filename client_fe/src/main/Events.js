@@ -8,7 +8,6 @@ import "./Events.css";
 const AppBody = () => {
   // pre event kartičky
   const { events } = useContext(EventsContext);
-//   console.log(allEvents)
   // pre zobrazenie archive/delete buttnu na karticke
   const { loggedInUser } = useContext(UsersContext);
   const loggedInUserEvents =  events.filter((event) => event.members.includes(loggedInUser._id))

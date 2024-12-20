@@ -19,6 +19,7 @@ h2 {
 
 .event-detail-icon {
   font-size: 4rem;
+  cursor: pointer;
 }
 
 .icon-plus {

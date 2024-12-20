@@ -6,3 +6,10 @@
   gap: 30px;
   color: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .events {
+	flex-direction: column;
+	align-items: center;
+  }
+}

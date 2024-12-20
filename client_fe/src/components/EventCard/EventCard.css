@@ -9,6 +9,8 @@
   border-radius: 20px;
   align-items: center;
   box-shadow: 2px 2px 3px #0f0f0f;
+  cursor: pointer;
+
 }
 
 .event-card-archived-color {
