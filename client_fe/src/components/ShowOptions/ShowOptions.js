@@ -35,7 +35,7 @@ function ShowOptions({ event }) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {event.owner === loggedInUser.id && (
+        {event.owner === loggedInUser._id && (
           <Dropdown.Item
             className="settings-text"
             onClick={() => setShowBtnChangeEventName(true)}
@@ -43,7 +43,7 @@ function ShowOptions({ event }) {
             Change name of list
           </Dropdown.Item>
         )}
-        {event.owner === loggedInUser.id && (
+        {event.owner === loggedInUser._id && (
           <Dropdown.Item
             className="settings-text"
             onClick={() => setShowBtnAddMembers(true)}
@@ -57,7 +57,7 @@ function ShowOptions({ event }) {
         >
           Show members
         </Dropdown.Item>
-        {event.owner !== loggedInUser.id && (
+        {event.owner !== loggedInUser._id && (
           <Dropdown.Item
             className="settings-text"
             onClick={() => setShowBtnLeaveEvent(true)}
@@ -65,7 +65,7 @@ function ShowOptions({ event }) {
             Leave list
           </Dropdown.Item>
         )}
-        {loggedInUser.id === event.owner && (
+        {loggedInUser._id === event.owner && (
           <Dropdown.Item
             onClick={() => setShowBtnArchive(true)}
             className="settings-buttons"
@@ -73,7 +73,7 @@ function ShowOptions({ event }) {
             <FaFileArchive />
           </Dropdown.Item>
         )}
-        {loggedInUser.id === event.owner && (
+        {loggedInUser._id === event.owner && (
           <Dropdown.Item
             onClick={() => setShowBtnDelete(true)}
             className="settings-buttons"

@@ -11,7 +11,7 @@ const ChangeEventNameForm = ({ event, handleClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleChangeEventName(event.id, newEventName, newEventIcon);
+    handleChangeEventName(event._id, newEventName, newEventIcon);
     handleClose();
   };
   return (

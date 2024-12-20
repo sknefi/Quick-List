@@ -121,26 +121,38 @@ const EventsProvider = ({ children }) => {
   // vráti všetkých memberov v danom evente
   function handleGetEventMembers(event) {
     const eventMembers = event.members.map((memberId) =>
-      users.find((user) => user.id === memberId)
+      users.find((user) => user._id === memberId)
     );
     return eventMembers;
   }
 
-  // pridá user id do listu event.members pre daný event
-  function handleAddUserForEvent(userId, eventId) {
-    const changedEvent = allEvents.map((event) => {
-      if (event.id === eventId) {
-        event.members.push(userId);
-      }
-      return event;
+  async function handleAddUserForEvent(userId, eventId) {
+    const event = getEvent(eventId);
+    const updatedEvent = { ...event, members: [...event.members, userId] };
+    const res = await updateEventSC(updatedEvent);
+    if (res.state !== "success") return;
+
+    setAllEvents((currentEvents) => {
+      const newEvents = currentEvents.map((evt) =>
+        evt._id === eventId ? res.event : evt
+      );
+      setEvents(
+        statusArchived ? newEvents : newEvents.filter((evt) => !evt.archived)
+      );
+      return newEvents;
     });
-    setAllEvents(changedEvent);
   }
 
   // odstráni userové id z listu event.members z daného eventu
-  function handleRemoveUserFromEvent(userId, eventId) {
+  async function handleRemoveUserFromEvent(userId, eventId) {
+    const event = getEvent(eventId);
+    const res = await updateEventSC({
+      ...event,
+      members: event.members.filter((memberId) => memberId !== userId),
+    });
+	if (res.state !== "success") return;
     const changedEvents = allEvents.map((event) => {
-      if (event.id === eventId) {
+      if (event._id === eventId) {
         event.members = event.members.filter((memberId) => memberId !== userId);
       }
       return event;
@@ -149,9 +161,12 @@ const EventsProvider = ({ children }) => {
   }
 
   // zmení meno eventu
-  function handleChangeEventName(eventId, newName, newIcon) {
+  async function handleChangeEventName(eventId, newName, newIcon) {
+    const event = getEvent(eventId);
+    const res = await updateEventSC({ ...event, name: newName, icon: newIcon });
+    if (res.state !== "success") return;
     const changedEvents = allEvents.map((event) => {
-      if (event.id === eventId) {
+      if (event._id === eventId) {
         event.name = newName;
         event.icon = newIcon;
       }
@@ -161,9 +176,12 @@ const EventsProvider = ({ children }) => {
   }
 
   // memeber opustí event
-  function handleLeaveList(eventId, userId) {
+  async function handleLeaveList(eventId, userId) {
+	const event = getEvent(eventId);
+	const res = await updateEventSC({...event, members: event.members.filter((memberId) => memberId !== userId)});
+	if (res.state !== "success") return;
     const changedEvents = allEvents.map((event) => {
-      if (event.id === eventId) {
+      if (event._id === eventId) {
         event.members = event.members.filter((memberId) => memberId !== userId);
       }
       return event;

@@ -8,11 +8,11 @@ const UsersProvider = ({ children }) => {
       name: "Filip",
       surname: "admin",
       email: "admin@admin.admin",
-      id: "674467bece726a70feda359c",
+      _id: "674467bece726a70feda359c",
       photo: "",
     },
     {
-      id: "674450c8e2f3f5cbcf033fff",
+      _id: "6765909496db20088e754f95",
       name: "David",
       surname: "Brown",
       email: "david@example.com",
@@ -23,14 +23,14 @@ const UsersProvider = ({ children }) => {
       surname: "Bey",
       email: "tkcko@example.com",
       photo: "a",
-      id: "paisjdkn1o23j1jaspokn",
+      _id: "6765908596db20088e754f89",
     },
     {
       name: "Vlada",
       surname: "Maskos",
       email: "vladimirus@example.com",
       photo: "a",
-      id: "lnxzklcnqiwj319ioafksnlzans",
+      _id: "6765907696db20088e754f7d",
     },
   ]);
 
@@ -38,12 +38,12 @@ const UsersProvider = ({ children }) => {
 	name: "Filip",
 	surname: "admin",
 	email: "admin@admin.admin",
-	id: "674467bece726a70feda359c",
+	_id: "674467bece726a70feda359c",
 	photo: "",
   });
 
   function handleChangeLoggedInUser(userId) {
-    const newUser = allUsers.find((user) => user.id === userId);
+    const newUser = allUsers.find((user) => user._id === userId);
     setLoggedInUser(newUser);
   }
 

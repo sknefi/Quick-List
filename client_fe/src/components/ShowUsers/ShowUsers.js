@@ -22,7 +22,7 @@ function ShowUsers() {
       <Dropdown.Menu>
         {users.map((user) => {
           return (
-            <Dropdown.Item onClick={() => handleClick(user.id)} key={user.id}>
+            <Dropdown.Item onClick={() => handleClick(user._id)} key={user._id}>
               {user.name}
             </Dropdown.Item>
           );

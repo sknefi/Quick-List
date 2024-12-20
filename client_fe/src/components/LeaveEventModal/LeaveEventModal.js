@@ -11,7 +11,7 @@ function LeaveEventModal({ show, handleClose, event }) {
   const { loggedInUser } = useContext(UsersContext);
 
   function handleClick() {
-    handleLeaveList(event.id, loggedInUser.id);
+    handleLeaveList(event._id, loggedInUser._id);
     handleClose();
     navigate("/");
   }

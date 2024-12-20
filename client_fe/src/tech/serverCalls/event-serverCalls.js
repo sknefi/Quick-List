@@ -5,6 +5,7 @@ export async function createEventSC(event) {
 	const error = null
 	const urlCall = `${serverInfo.eventUrl}/create`;
 	const { _id, ...eventTotSend } = event;
+	console.log(eventTotSend);
 	try {
 		const response = await fetch(urlCall, {
 			method: "POST",

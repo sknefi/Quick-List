@@ -12,19 +12,19 @@ function DisplayMembersAdd({ event }) {
   return (
     <ListGroup>
       {users.map((user) => {
-        const isMember = event.members.includes(user.id);
+        const isMember = event.members.includes(user._id);
         return (
           <ListGroup.Item
             action={!isMember}
             disabled={isMember}
             className="add-members-div"
-            key={user.id}
+            key={user._id}
           >
             {user.name}
-            {user.id !== loggedInUser.id && !isMember && (
+            {user._id !== loggedInUser._id && !isMember && (
               <TiUserAdd
                 className="icon-add-user"
-                onClick={() => handleAddUserForEvent(user.id, event.id)}
+                onClick={() => handleAddUserForEvent(user._id, event._id)}
               />
             )}
           </ListGroup.Item>

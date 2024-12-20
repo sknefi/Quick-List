@@ -16,16 +16,17 @@ function CreateEventForm({ handleClose }) {
     // musím vygenerovať dočasné ID, pretože keď mažem a archivujem potrebujem 
     // mať id eventu (listu), inak by sa zmazali/zarchivovali všetky čo sú novovytvorené
     const tempId = Math.random().toString(36) + Date.now().toString(36);
-
-    return {
-      name: name,
-      members: [loggedInUser.id],
-      owner: loggedInUser.id,
-      items: [],
-      archived: false,
-      icon: icon,
-      _id: tempId,
-    };
+	const newEvent = {
+		name: name,
+		members: [loggedInUser._id],
+		owner: loggedInUser._id,
+		items: [],
+		archived: false,
+		icon: icon,
+		_id: tempId,
+	  }
+	  console.log(newEvent)
+    return { ...newEvent };
   };
 
   const handleSubmit = async (e) => {

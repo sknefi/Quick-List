@@ -37,13 +37,13 @@ const EventCard = ({ event, loggedInUser }) => {
       </h3>
 
       <div className="event-card-icons">
-        {loggedInUser.id === event.owner && (
+        {loggedInUser._id === event.owner && (
           <FaFileArchive
             className="icon-archive"
             onClick={handleShowBtnArchive}
           />
         )}
-        {loggedInUser.id === event.owner && (
+        {loggedInUser._id === event.owner && (
           <FaTrash className="icon-delete" onClick={handleShowBtnDelete} />
         )}
       </div>

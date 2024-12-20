@@ -8,16 +8,15 @@ import { EventsContext } from "../../tech/contexts/EventsContext";
 function DisplayMembers({ eventMembers, eventOwner, eventId }) {
   const { loggedInUser } = useContext(UsersContext);
   const { handleRemoveUserFromEvent } = useContext(EventsContext);
-  console.log(eventMembers);
   return (
     <ListGroup>
       {eventMembers.map((user) => {
         return (
-          <ListGroup.Item key={user.id} className="display-members-div">
+          <ListGroup.Item key={user._id} className="display-members-div">
             {user.name}
-            {loggedInUser.id === eventOwner && loggedInUser.id !== user.id && (
+            {loggedInUser._id === eventOwner && loggedInUser._id !== user._id && (
               <FaTrash
-                onClick={() => handleRemoveUserFromEvent(user.id, eventId)}
+                onClick={() => handleRemoveUserFromEvent(user._id, eventId)}
               />
             )}
           </ListGroup.Item>

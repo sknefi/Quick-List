@@ -19,7 +19,7 @@ function EventMembersModal({ handleClose, show, event }) {
           <DisplayMembers
             eventMembers={eventMembers}
             eventOwner={event.owner}
-            eventId={event.id}
+            eventId={event._id}
           />
         </Modal.Body>
       </Modal>
