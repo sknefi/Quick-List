@@ -44,7 +44,7 @@ const ChangeEventNameForm = ({ event, handleClose }) => {
           isInvalid={error.name} // Show error if name is empty
         />
         <Form.Control.Feedback type="invalid">
-          {t.nameAndIconRequired} {/* You can customize this message */}
+          {t.nameAndIconRequired}
         </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicIcon">
@@ -57,7 +57,7 @@ const ChangeEventNameForm = ({ event, handleClose }) => {
           isInvalid={error.icon} // Show error if icon is empty
         />
         <Form.Control.Feedback type="invalid">
-          {t.nameAndIconRequired} {/* You can customize this message */}
+          {t.nameAndIconRequired}
         </Form.Control.Feedback>
       </Form.Group>
       <Button variant="primary" type="submit" className="button-create-list-form">
