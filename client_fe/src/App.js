@@ -16,7 +16,6 @@ const App = () => {
 
   return (
     <div style={divStyles}>
-      {/* nastavit router => zobrazi sa bud Events alebo EventDetail */}
       <BrowserRouter>
         <TranslationProvider>
           <UsersProvider>
