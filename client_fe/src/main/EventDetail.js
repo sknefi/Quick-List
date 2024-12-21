@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { EventsContext } from "../tech/contexts/EventsContext";
 import AddItemModal from "../components/AddItemModal/AddItemModal";
 import ShowOptions from "../components/ShowOptions/ShowOptions";
+import ItemsPieChart from "../components/ItemsPieChart/ItemsPieChart";
 
 const EventDetail = () => {
   const { id } = useParams();
@@ -53,7 +54,10 @@ const EventDetail = () => {
           <ShowOptions event={event} />
         </div>
       </div>
-      <ShowItems items={items} event={event} />
+      <div className="items-and-pie">
+        <ShowItems items={items} event={event} />
+        {event.items.length > 0 && <ItemsPieChart />}
+      </div>
       <AddItemModal
         show={showAddItemModal}
         handleClose={() => setShowAddItemModal(false)}
