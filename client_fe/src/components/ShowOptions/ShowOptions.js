@@ -28,7 +28,6 @@ function ShowOptions({ event }) {
 
   function handleDeleteButton() {
     setShowBtnDelete(false);
-    navigate("/");
   }
   return (
     <Dropdown>

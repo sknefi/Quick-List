@@ -36,16 +36,22 @@ const EventCard = ({ event, loggedInUser }) => {
         {event.icon}
       </h3>
 
-      <div className="event-card-icons">
-        {loggedInUser._id === event.owner && (
-          <FaFileArchive
-            className="icon-archive"
-            onClick={handleShowBtnArchive}
-          />
-        )}
-        {loggedInUser._id === event.owner && (
-          <FaTrash className="icon-delete" onClick={handleShowBtnDelete} />
-        )}
+      <div className="event-card-footer">
+        <div className="tasks-done">
+            {event.items.filter((item) => item.state === "done").length}/
+            {event.items.length}
+        </div>
+        <div className="icons-card">
+          {loggedInUser._id === event.owner && (
+            <FaFileArchive
+              className="icon-archive"
+              onClick={handleShowBtnArchive}
+            />
+          )}
+          {loggedInUser._id === event.owner && (
+            <FaTrash className="icon-delete" onClick={handleShowBtnDelete} />
+          )}
+        </div>
       </div>
       <DeleteModal
         show={showBtnDelete}

@@ -3,14 +3,17 @@ import Modal from "react-bootstrap/Modal";
 import { EventsContext } from "../../tech/contexts/EventsContext";
 import { useContext } from "react";
 import { TranslationContext } from "../../tech/contexts/TranslationContext";
+import { useNavigate } from "react-router-dom";
 
 function DeleteModal({ show, handleClose, event }) {
+  const navigate = useNavigate();
   const { handleDeleteEvent } = useContext(EventsContext);
   const { t } = useContext(TranslationContext);
 
   function handleDeleteButton(eventId) {
     handleDeleteEvent(eventId);
     handleClose();
+    navigate("/");
   }
   return (
     <>

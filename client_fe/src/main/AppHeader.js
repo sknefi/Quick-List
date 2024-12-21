@@ -28,6 +28,14 @@ const AppHeader = () => {
     cursor: "pointer",
   };
 
+  const iconsStyles = {
+	fontSize: "1.5em",
+	cursor: "pointer",
+	display: "flex",
+	flexDirection: "row",
+	gap: "30px",
+  };
+
   const navigate = useNavigate();
 
   function handleNavigate() {
@@ -36,17 +44,19 @@ const AppHeader = () => {
 
   return (
     <div style={divStyles}>
-      <ShowUsers />
-      <MdOutlineDarkMode onClick={changeColorTheme} style={moonStyles} />
-      {language === "sk" ? (
-        <p onClick={() => switchLanguage("sk")} style={{ cursor: "pointer" }}>
-          EN
-        </p>
-      ) : (
-        <p onClick={() => switchLanguage("en")} style={{ cursor: "pointer" }}>
-          SK
-        </p>
-      )}
+      <div style={iconsStyles}>
+        <ShowUsers />
+        <MdOutlineDarkMode onClick={changeColorTheme} style={moonStyles} />
+        {language === "sk" ? (
+          <p onClick={() => switchLanguage("sk")} style={{ cursor: "pointer", margin: "0" }}>
+            EN
+          </p>
+        ) : (
+          <p onClick={() => switchLanguage("en")} style={{ cursor: "pointer", margin: "0" }}>
+            SK
+          </p>
+        )}
+      </div>
 
       <img src={logo} style={logoStyles} onClick={handleNavigate} />
     </div>
